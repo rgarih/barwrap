@@ -6,7 +6,7 @@ class CreatePlaces < ActiveRecord::Migration[5.2]
       t.text :description
       t.string :place_type
       t.string :photo
-      t.range :age_group
+      t.integer :age_group
 
       t.timestamps
     end
