@@ -7,11 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 puts "Creating profiles"
-brenda = User.new
-gilad =
-rachel =
-jade =
-joe =
 
 types = ["Bar", "Club"]
 10.times do
@@ -25,7 +20,7 @@ types = ["Bar", "Club"]
     password: 123456,
     username: Faker::Name.first_name + Faker::Name.last_name,
     bio: Faker::Lorem.paragraph,
-    photo: "https://source.unsplash.com/random"
+    remote_photo_url: "https://source.unsplash.com/random"
     )
   user.save
   place = Place.new(
@@ -50,6 +45,7 @@ types = ["Bar", "Club"]
     place: place
     )
   favs.save
+
   if User.all.length > 2
     friendship = Friendship.new(
       user: user,

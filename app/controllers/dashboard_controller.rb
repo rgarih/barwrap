@@ -1,7 +1,6 @@
 class DashboardController < ApplicationController
   def profile
     @user = User.find(params[:id])
-    #@user = current_user
   end
 
   def edit
