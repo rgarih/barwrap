@@ -1,2 +1,8 @@
-<h1>Dashboard#profile</h1>
-<p>Find me in app/views/dashboard/profile.html.erb</p>
+<%= @user.first_name %><br>
+<%= @user.last_name %> <br>
+<%= @user.location %><br>
+<%= @user.gender %><br>
+<%= @user.bio %><br>
+<%= @user.age %>
+<%= cl_image_tag @user.photo, height: 300, width: 400, crop: :fill %>
+<%= link_to "EDIT", edit_dashboard_path(@user) %>
