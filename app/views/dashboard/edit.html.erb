@@ -1,2 +1,8 @@
-<h1>Dashboard#edit</h1>
-<p>Find me in app/views/dashboard/edit.html.erb</p>
+<%= simple_form_for @user , url: dashboard_path(@user), method: :patch do |f| %>
+<%= f.input :first_name  %>
+<%= f.input :last_name  %>
+<%= f.input :bio %>
+<%= f.input :age%>
+<%= f.input :email %>
+<%= f.submit %>
+<% end %>
