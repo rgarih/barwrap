@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :friendships
+  has_many :favorite_places
   has_many :friends, through: :friendships
 
   mount_uploader :photo, PhotoUploader
@@ -7,4 +8,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  has_many :friendships
+  has_many :favorite_places
+  has_many :checkins
+
 end
