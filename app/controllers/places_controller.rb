@@ -1,3 +1,4 @@
+
 class PlacesController < ApplicationController
   def map
   end
@@ -34,6 +35,5 @@ class PlacesController < ApplicationController
   end
 
   def checkin
-
   end
 end
