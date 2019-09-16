@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_16_083513) do
+ActiveRecord::Schema.define(version: 2019_09_16_135346) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,13 +36,13 @@ ActiveRecord::Schema.define(version: 2019_09_16_083513) do
     t.index ["user_id"], name: "index_favorite_places_on_user_id"
   end
 
-  create_table "friendships", force: :cascade do |t|
-    t.bigint "user_id"
+  create_table "followings", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "friend_id"
-    t.index ["friend_id"], name: "index_friendships_on_friend_id"
-    t.index ["user_id"], name: "index_friendships_on_user_id"
+    t.bigint "following_id"
+    t.bigint "follower_id"
+    t.index ["follower_id"], name: "index_followings_on_follower_id"
+    t.index ["following_id"], name: "index_followings_on_following_id"
   end
 
   create_table "places", force: :cascade do |t|
@@ -80,6 +80,6 @@ ActiveRecord::Schema.define(version: 2019_09_16_083513) do
   add_foreign_key "check_ins", "users"
   add_foreign_key "favorite_places", "places"
   add_foreign_key "favorite_places", "users"
-  add_foreign_key "friendships", "users"
-  add_foreign_key "friendships", "users", column: "friend_id"
+  add_foreign_key "followings", "users", column: "follower_id"
+  add_foreign_key "followings", "users", column: "following_id"
 end
