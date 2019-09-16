@@ -1,0 +1,97 @@
+.sign {
+  background-color: $dark-blue;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0px;
+  left: 0px;
+}
+
+
+.signup-form {
+  margin-top: 150px;
+  border-top: 3px solid white;
+  border-bottom: 3px solid white;
+  width: 80%;
+  margin: 149px auto;
+}
+.signup-form .btn {
+  color: white;
+  background-color: #8044E5;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  font-weight: bolder;
+  margin-left: 50px;
+  margin-right: 50px;
+  border: 2px;
+  border-radius: 20px;
+  width: 300px;
+  font-size: 24px;
+  margin: 0;
+  margin-bottom: 40px;
+}
+.form-check-label {
+  color: $purple !important;
+}
+
+.signup-links {
+
+  a {
+   color: white;
+   background-color: #8044E5;
+   text-align: center;
+   display: block;
+   margin: 0 auto;
+   font-weight: bolder;
+   border: 2px;
+   border-radius: 20px;
+   width: 300px;
+   padding: 6px 6px 6px 6px;
+   font-size: 24px;
+   margin-top:30px;
+ }
+}
+.signup-links {
+
+  a.forgot {
+    font-size: 16px !important;
+    background-color: transparent;
+    border: none;
+    margin-bottom: 0;
+
+  }
+}
+.form-control {
+  .is-valid {
+  border-color: $purple !important;
+  }
+  border-radius: 20px;
+}
+
+.border1, .border2 {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .border {
+    height: 3px;
+    background-color: white;
+    width: 80%;
+  }
+}
+.textor p {
+  color: white;
+  display: flex;
+  align-items: flex-start;
+  font-size: 24px;
+  flex: 1;
+  margin: 0;
+}
+h2 {
+  color: white;
+  font-size: 24px;
+  text-align: center;
+  margin: 10px;
+}
+
