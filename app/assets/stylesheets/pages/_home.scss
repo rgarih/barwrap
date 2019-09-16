@@ -1,2 +1,33 @@
 // Specific CSS for your home-page
+.home-container h1 {
+  text-align: center;
+  color: white;
+  padding: 40px
+}
+.home-container {
+  background-color: #000038;
+  height: 100vh;
+}
+.home-container p {
+  color: white;
+  margin: 20px;
+  font-size: 26px;
+}
+.home-container img {
+  margin: 40px;
+}
+.home-container a {
+  color: white;
+  background-color: #8044E5;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  font-weight: bolder;
+  margin-left: 50px;
+  margin-right: 50px;
+  border: 2px;
+  border-radius: 20px;
+  height: 40px;
+  font-size: 24px;
 
+}
