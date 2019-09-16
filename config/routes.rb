@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'places/map'
+  get 'places/index'
+  get 'places/recommended'
+  get 'places/checkin'
   get 'dashboard/profile'
   get 'dashboard/edit'
   get 'dashboard/update'
