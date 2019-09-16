@@ -9,3 +9,6 @@
   <%= link_to "EDIT", edit_dashboard_path(@user) %>
 <% end %>
 
+<% if @user.friends.nil? %>
+<h1>friendlist</h1>
+<%end %>
