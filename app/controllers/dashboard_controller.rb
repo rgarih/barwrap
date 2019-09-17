@@ -3,6 +3,7 @@ class DashboardController < ApplicationController
     @user = User.find(params[:id])
     @followings_count = @user.followings.count
     @followers_count = @user.followers.count
+    @checkin = @user.check_ins.order("created_at DESC")
   end
 
   def edit
