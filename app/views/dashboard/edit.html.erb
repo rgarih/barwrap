@@ -1,9 +1,12 @@
-
 <%= simple_form_for @user , url: dashboard_path(@user), method: :patch do |f| %>
 <%= f.input :first_name  %>
 <%= f.input :last_name  %>
+<%= f.input :location %>
+<%= f.input :age %>
+<%= f.input :gender %>
+<%= f.input :username %>
 <%= f.input :bio %>
-<%= f.input :age%>
+<%= f.input :age %>
 <%= f.input :email %>
 <%= f.input :photo %>
   <%= f.input :photo_cache, as: :hidden %>

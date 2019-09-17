@@ -1,14 +1,13 @@
 class User < ApplicationRecord
   has_many :favorite_places
+  has_many :check_ins
+
 
   mount_uploader :photo, PhotoUploader
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :favorite_places
-  has_many :checkins
-
 
   has_many :followings
 
