@@ -68,9 +68,9 @@ html_doc.search('b a').each do |element|
       )
     favs.save
     if User.all.length > 2
-      friendship = Friendship.new(
-        user: user,
-        friend: User.find(user.id - 1)
+      friendship = Following.new(
+        following: user,
+        follower: User.find(user.id - 1)
         )
       friendship.save
     end
