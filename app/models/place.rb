@@ -1,5 +1,15 @@
 class Place < ApplicationRecord
-  has_many :favorite_places
   has_many :checkins
-
+  has_many :favorite_places
+  include PgSearch::Model
+  pg_search_scope :search_by_name_and_location,
+    against: [:name, :location],
+    associated_against: {
+      checkins: [:type_of_music]
+    },
+    using: {
+      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+    }
+  TYPE_PLACE = ["Bar", "Club"]
+  validates :place_type, inclusion: {in: TYPE_PLACE}
 end

@@ -8,6 +8,7 @@ class PlacesController < ApplicationController
   end
 
   def recommended
+    @place = Place.new
     places = Place.all
     checkins = CheckIn.all
     @most_recent_checkins = checkins.select {|checkin|

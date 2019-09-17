@@ -1,14 +1,52 @@
-<h1>Places#recommended</h1>
-<div class="col-sm-12">
-  <div class="banner">
-    <div class="banner-image">
-
+<div class="banner-recommended">
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle banner-recommended-search-bar" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Search
+    </button>
+    <ul class="dropdown-menu search-box-filter allow-focus" aria-labelledby="dropdownMenuButton">
+      <li class="search-form">
+        <div>
+          <%= form_tag places_path, method: :get do %>
+          <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "search"
+          %>
+        </div>
+      </li>
+      <hr>
+      <div class="checkbox-container">
+        <% CheckIn::TYPE_OF_MUSIC.each do |type| %>
+        <li class="checkbox">
+          <label for="<%= type %>" class="label-check">
+            <input type="checkbox" class="d-none" autocomplete="off" value="<%= type %>" name="search[types][]" id="<%=type%>"><%= type %></label>
+        </li>
+        <% end %>
+      </div>
+      <%= submit_tag %>
+      <% end %>
+      <a class="dropdown-item" href="#">Something else here</a>
+    </ul>
+  </div>
+  <h2>Here to Save Your Night </h2>
+</div>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <h1>Places#recommended</h1>
+    <div class="col-12">
     </div>
   </div>
-
-<% @most_recent_checkins.each do |checkin| %>
-  <p><%=checkin.place.name  %></p>
-  <p><%=checkin.place.location  %></p>
-  <img src=<%=checkin.place.photo  %>>
-<% end %>
+  <div class="row justify-content-md-center">
+    <% @most_recent_checkins.each do |checkin| %>
+    <div class="col-12">
+      <p><%=checkin.place.name  %></p>
+      <p><%=checkin.place.location  %></p>
+      <% if checkin.place.photo %>
+      <%= image_tag checkin.place.photo, class:"rounded mx-auto d-block img-fluid img-thumbnail" %>
+      <% else %>
+      <%= image_tag "https://cdn.theculturetrip.com/wp-content/uploads/2016/09/main-bar-at-tir-na-nog.jpg", class:"rounded mx-auto d-block img-fluid img-thumbnail" %>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
 </div>
