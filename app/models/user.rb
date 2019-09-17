@@ -20,3 +20,4 @@ class User < ApplicationRecord
   has_many :followings, through: :following_relationships, source: :following
 
 end
+
