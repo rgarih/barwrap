@@ -4,6 +4,12 @@ Rails.application.routes.draw do
   get 'places/index'
   get 'places/recommended'
   get 'places/checkin'
+  resources :users do
+    member do
+      post :follow
+      post :unfollow
+    end
+  end
 
   devise_for :users
   root to: 'pages#home'
@@ -14,6 +20,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: [:edit, :update]
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
