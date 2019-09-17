@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'places/index'
   get 'places/recommended'
   get 'places/checkin'
-  '
+
   devise_for :users
   root to: 'pages#home'
   resources :dashboard do
