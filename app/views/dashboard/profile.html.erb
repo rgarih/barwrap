@@ -9,6 +9,5 @@
   <%= link_to "EDIT", edit_dashboard_path(@user) %>
 <% end %>
 
-<% if @user.friends.nil? %>
-<h1>friendlist</h1>
-<%end %>
+<p>Follows <%= link_to @followings_count, friend_list_dashboard_path(@user, friend_type: "follows")%></p>
+<p>Followers <%= link_to @followers_count, friend_list_dashboard_path(@user, friend_type: "followers")%></p>

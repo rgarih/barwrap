@@ -4,13 +4,13 @@ Rails.application.routes.draw do
   get 'places/index'
   get 'places/recommended'
   get 'places/checkin'
-
-
+  '
   devise_for :users
   root to: 'pages#home'
   resources :dashboard do
     member do
       get 'profile'
+      get 'friend_list'
     end
   end
 
