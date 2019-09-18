@@ -3,13 +3,12 @@ Rails.application.routes.draw do
   get 'places/map'
   get 'places/recommended'
   get 'places/checkin'
-  resources :users do
+  resources :users , only:[:index] do
     member do
       post :follow
       post :unfollow
     end
   end
-
   devise_for :users
   root to: 'pages#home'
   resources :dashboard do
