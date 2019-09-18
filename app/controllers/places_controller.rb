@@ -4,7 +4,16 @@ class PlacesController < ApplicationController
   end
 
   def index
-    @places = Place.all
+    @places = Place.geocoded
+    @markers = []
+
+    @places.each do |place|
+      @markers << {
+        lat: place.latitude,
+        lng: place.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { place: place}),
+      }
+    end
   end
 
   def recommended
