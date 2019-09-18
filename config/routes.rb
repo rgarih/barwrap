@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-
+  resources :places, only: [:index]
   get 'places/map'
-  get 'places/index'
   get 'places/recommended'
   get 'places/checkin'
   resources :users do
