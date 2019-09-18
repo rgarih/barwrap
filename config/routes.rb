@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'places/map'
   get 'places/recommended'
   get 'places/checkin'
-
+  resources :users , only:[:index] do
 
   devise_for :users
   root to: 'pages#home'
