@@ -5,11 +5,13 @@ class PlacesController < ApplicationController
 
   def index
     @places = Place.geocoded
+    @markers = []
 
-    @markers = @places.map do |place|
-      {
+    @places.each do |place|
+      @markers << {
         lat: place.latitude,
-        lng: place.longitude
+        lng: place.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { place: place}),
       }
     end
   end
