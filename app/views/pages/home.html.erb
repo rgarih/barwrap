@@ -6,27 +6,12 @@
 <%= image_tag("landing-image.png") %>
 
 <p> <span id="landing-text"></span></p>
+<% if user_signed_in? %>
+<%= link_to "Start", places_checkin_path %>
+<% else %>
 <%= link_to "Start", new_user_session_path %>
+<% end %>
 </div>
+ <%= link_to "Log out", destroy_user_session_path, method: :delete %>
 
 
-<div class="dropdown">
-  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown link
-  </a>
-
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-      <li class="checkbox">
-        <label for="type" class="label-check">
-          <input type="checkbox" class="" autocomplete="off" value="type" name="search[types][]" id="type">
-          Type
-        </label>
-      </li>
-      <li class="checkbox">
-        <label for="best" class="label-check">
-          <input type="checkbox" class="" autocomplete="off" value="best" name="search[types][]" id="best">
-          Best
-        </label>
-      </li>
-  </div>
-</div>

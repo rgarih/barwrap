@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'places/recommended'
   get 'places/checkin'
 
-  resources :users , only:[:index] do
+  resources :users , only:[:index, :edit, :update] do
     member do
       post :follow
       post :unfollow
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   end
 
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: "registrations" }
   root to: 'pages#home'
   resources :dashboard do
     member do

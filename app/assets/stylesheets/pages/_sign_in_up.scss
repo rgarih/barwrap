@@ -101,4 +101,25 @@ h2.sign_up {
     text-align: left;
     line-height: 2.5;
   }
-
+.male {
+  display: flex;
+  color: white;
+  font-weight: bolder;
+  margin-top: 30px;
+  margin-bottom: 30px;
+    h3 {
+    font-size: 24px;
+    width: 40vw;
+    padding-left: 5px;
+  }
+}
+.female {
+  display: flex;
+  color: white;
+  font-weight: bolder;
+  margin-bottom: 30px;
+  h3 {
+    font-size: 24px;
+    width: 40vw;
+  }
+}
