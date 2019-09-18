@@ -20,37 +20,66 @@
         <li class="checkbox">
           <label for="<%= type %>" class="label-check">
             <input type="checkbox" class="d-none" autocomplete="off" value="<%= type %>" name="search[types][]" id="<%=type%>"><%= type %></label>
-        </li>
+          </li>
+          <% end %>
+        </div>
+        <hr>
+        <div class="range">
+          <label for="customRange2">Distance</label>
+          <input type="range" class="custom-range" min="0" max="50" id="distance" name="search[distance]">
+        </div>
+        <input type="submit" name="commit" value="Search" class="banner-submit btn btn-success">
         <% end %>
-      </div>
-      <hr>
-      <div class="range">
-        <label for="customRange2">Distance</label>
-        <input type="range" class="custom-range" min="0" max="50" id="distance" name="search[distance]">
-      </div>
-      <%= submit_tag %>
-      <% end %>
-    </ul>
+      </ul>
+    </div>
+    <h2>Here to Save Your Night </h2>
   </div>
-  <h2>Here to Save Your Night </h2>
-</div>
-<div class="container">
-  <div class="row justify-content-md-center">
-    <h1>Places#recommended</h1>
-    <div class="col-12">
+  <div class="container container-banner">
+    <hr>
+    <div class="row justify-content-md-center">
+      <div class="col-12 most-talked-about">
+        <h2>Most Talked about places right now</h2>
+        <div class="most-talked-about-container">
+          <div class="slider">
+            <% @most_talked_about.each do |place| %>
+            <div class="card place-card">
+              <% if place.photo %>
+              <%= image_tag place.photo, class:"card-img-top" %>
+              <% else %>
+              <%= image_tag "https://cdn.theculturetrip.com/wp-content/uploads/2016/09/main-bar-at-tir-na-nog.jpg", class:"card-img-top" %>
+              <% end %>
+              <div class="card-body">
+                <h2 class="card-text"> <%= link_to place.name, places_show_path(place)  %></h2>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr >
+    <div class="row justify-content-md-center">
+      <div class="col-12 most-talked-about">
+        <h2>Recommended for You</h2>
+        <div class="most-talked-about-container">
+          <div class="slider">
+            <% @recommended.each do |place| %>
+            <div class="card place-card">
+              <% if place.photo %>
+              <%= image_tag place.photo, class:"card-img-top" %>
+              <% else %>
+              <%= image_tag "https://cdn.theculturetrip.com/wp-content/uploads/2016/09/main-bar-at-tir-na-nog.jpg", class:"card-img-top" %>
+              <% end %>
+              <div class="card-body">
+                <h2 class="card-text"> <%= link_to place.name, places_show_path(place)  %></h2>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="row justify-content-md-center">
-    <% @most_recent_checkins.each do |checkin| %>
-    <div class="col-12">
-      <p><%=checkin.place.name  %></p>
-      <p><%=checkin.place.location  %></p>
-      <% if checkin.place.photo %>
-      <%= image_tag checkin.place.photo, class:"rounded mx-auto d-block img-fluid img-thumbnail" %>
-      <% else %>
-      <%= image_tag "https://cdn.theculturetrip.com/wp-content/uploads/2016/09/main-bar-at-tir-na-nog.jpg", class:"rounded mx-auto d-block img-fluid img-thumbnail" %>
-      <% end %>
-    </div>
-    <% end %>
-  </div>
-</div>
+  <%= content_for :after_js do %>
+    <%= javascript_pack_tag 'recommended' %>
+  <% end %>
