@@ -44,7 +44,7 @@
             <% @most_talked_about.each do |place| %>
             <div class="card place-card">
               <% if place.photo %>
-              <%= image_tag place.photo, class:"card-img-top" %>
+              <%= cl_image_tag place.photo, class:"card-img-top" %>
               <% else %>
               <%= image_tag "https://cdn.theculturetrip.com/wp-content/uploads/2016/09/main-bar-at-tir-na-nog.jpg", class:"card-img-top" %>
               <% end %>
@@ -66,7 +66,7 @@
             <% @recommended.each do |place| %>
             <div class="card place-card">
               <% if place.photo %>
-              <%= image_tag place.photo, class:"card-img-top" %>
+              <%= cl_image_tag place.photo, class:"card-img-top" %>
               <% else %>
               <%= image_tag "https://cdn.theculturetrip.com/wp-content/uploads/2016/09/main-bar-at-tir-na-nog.jpg", class:"card-img-top" %>
               <% end %>
