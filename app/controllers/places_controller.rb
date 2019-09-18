@@ -1,7 +1,5 @@
 
 class PlacesController < ApplicationController
-  def map
-  end
 
   def index
     @places = Place.geocoded
@@ -15,6 +13,7 @@ class PlacesController < ApplicationController
       }
     end
   end
+
 
   def recommended
     @place = Place.new
