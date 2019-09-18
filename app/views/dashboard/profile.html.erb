@@ -8,6 +8,8 @@
 <%= cl_image_tag @user.photo, height: 300, width: 400, crop: :fill %>
 <% if current_user == @user %>
   <%= link_to "EDIT", edit_dashboard_path(@user) %>
+  <% else %>
+  <%= render @user %>
 <% end %>
 
 <p>Follows <%= link_to @followings_count, friend_list_dashboard_path(@user, friend_type: "follows")%></p>
@@ -20,8 +22,3 @@
 <% end %>
 
 
-
-<h1>Users:</h1>
-<ul>
-  <%= render @users %>
-</ul>

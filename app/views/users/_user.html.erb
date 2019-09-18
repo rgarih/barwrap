@@ -1,5 +1,5 @@
 <li data-user=<%= user.id %>>
-  <%= user.first_name %>
+  <%= link_to user.first_name , profile_dashboard_path(user) %>
   <% if current_user.is_following?(user.id) %>
     <%= link_to "Unfollow", unfollow_user_path(user.id), method: :post, remote: true %>
   <% else %>
