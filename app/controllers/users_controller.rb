@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   before_action :set_user, only: [:follow, :unfollow, :edit, :update]
 
   def index
@@ -39,5 +40,6 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :first_name, :last_name, :photo, :location, :bio, :age, :gender, :username)
+
   end
 end

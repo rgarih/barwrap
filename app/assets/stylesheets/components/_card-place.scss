@@ -1,0 +1,33 @@
+.place-card{
+  margin: 5px;
+  margin-left: 20px;
+  margin-right: 20px;
+  width: 140px;
+  border: none;
+  border-radius: 12px;
+  flex: 0 0 140px;
+
+  scroll-snap-align: start;
+
+
+  .card-body{
+    background-color: black;
+    padding: 3px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+
+    .card-text{
+      color: white;
+    }
+  }
+  .card-img-top{
+    width: 140px;
+    height: 140px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+}
+.card-all{
+  border-radius: 10px
+}

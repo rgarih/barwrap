@@ -31,9 +31,7 @@ html_doc.search('b a').each do |element|
       username: Faker::Name.first_name + Faker::Name.last_name,
       bio: Faker::Lorem.paragraph,
 
-      photo: "https://source.unsplash.com/random"
-
-      # remote_photo_url: "https://source.unsplash.com/random"
+      remote_photo_url: "https://source.unsplash.com/random"
 
       )
     user.save
@@ -54,10 +52,7 @@ html_doc.search('b a').each do |element|
       location: location,
       description: description,
       place_type: types.sample,
-
-      photo: photo,
-
-      # remote_photo_url: photo,
+      remote_photo_url: photo,
 
       age_group: Faker::Number.between(from: 18, to: 35)
       )
@@ -67,8 +62,7 @@ html_doc.search('b a').each do |element|
       place: place,
       comment: Faker::Lorem.paragraph,
       type_of_music: Faker::Music.genre,
-      photo: "https://source.unsplash.com/random"
-      # remote_photo_url: "https://source.unsplash.com/random"
+      remote_photo_url: "https://source.unsplash.com/random"
       )
     checkin.save
     favs = FavoritePlace.new(
