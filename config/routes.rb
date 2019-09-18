@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   get 'places/map'
   get 'places/recommended'
   get 'places/checkin'
-  resources :users do
+  get 'places/show'
+
+
+
+resources :users , only:[:index] do
     member do
       post :follow
       post :unfollow
