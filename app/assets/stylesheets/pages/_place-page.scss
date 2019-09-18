@@ -1,0 +1,25 @@
+.place-details{
+  display: flex;
+  color: white;
+  margin: 7px;
+  flex-wrap: wrap;
+  p{
+    font-size: 14px;
+    font-weight: 100;
+
+  }
+}
+.container-place-page{
+  background-color: #0B0B0F;
+  .check-in-container{
+    text-align: center;
+  }
+}
+
+  .icon-batwrap{
+    height: 20px;
+    background-color: white;
+    color: white;
+    margin-right: 3px;
+
+  }

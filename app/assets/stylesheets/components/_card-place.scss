@@ -1,3 +1,6 @@
+.card{
+  background-color: #0B0B0F;
+}
 .place-card{
   margin: 5px;
   margin-left: 20px;
@@ -19,6 +22,10 @@
 
     .card-text{
       color: white;
+      a{
+        color: white;
+        font-weight: 200;
+      }
     }
   }
   .card-img-top{

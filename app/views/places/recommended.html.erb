@@ -43,15 +43,17 @@
           <div class="slider">
             <% @most_talked_about.each do |place| %>
             <div class="card place-card">
+              <%= link_to place_path(place) do %>
               <% if place.photo %>
               <%= cl_image_tag place.photo, class:"card-img-top" %>
               <% else %>
               <%= image_tag "https://cdn.theculturetrip.com/wp-content/uploads/2016/09/main-bar-at-tir-na-nog.jpg", class:"card-img-top" %>
               <% end %>
               <div class="card-body">
-                <h2 class="card-text"> <%= link_to place.name, places_show_path(place)  %></h2>
+                <h2 class="card-text"> <%= place.name %></h2>
               </div>
             </div>
+            <% end %>
             <% end %>
           </div>
         </div>
@@ -63,17 +65,22 @@
         <h2>Recommended for You</h2>
         <div class="most-talked-about-container">
           <div class="slider">
+            <% if @recommended.empty? %>
+            <% @recommended = @places %>
+            <% end %>
             <% @recommended.each do |place| %>
             <div class="card place-card">
+              <%= link_to place_path(place) do %>
               <% if place.photo %>
               <%= cl_image_tag place.photo, class:"card-img-top" %>
               <% else %>
               <%= image_tag "https://cdn.theculturetrip.com/wp-content/uploads/2016/09/main-bar-at-tir-na-nog.jpg", class:"card-img-top" %>
               <% end %>
               <div class="card-body">
-                <h2 class="card-text"> <%= link_to place.name, places_show_path(place)  %></h2>
+                <h2 class="card-text"> <%=place.name %></h2>
               </div>
             </div>
+            <% end %>
             <% end %>
           </div>
         </div>
@@ -81,5 +88,5 @@
     </div>
   </div>
   <%= content_for :after_js do %>
-    <%= javascript_pack_tag 'recommended' %>
+  <%= javascript_pack_tag 'recommended' %>
   <% end %>
