@@ -42,11 +42,12 @@
   }
   .search-box-filter{
     width: 100%;
+    text-align: center;
     background-color: #0B0B0F;
     opacity: 0.9;
-  }
-  a{
-    color: white;
+    margin: -1px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
   }
   hr{
     color: white;
@@ -58,7 +59,12 @@
   .range{
     color: white;
     text-align: center;
-
+    margin: 7px;
+  }
+  .show{
+    .btn-secondary{
+      background-color: #000000;
+    }
   }
 }
 

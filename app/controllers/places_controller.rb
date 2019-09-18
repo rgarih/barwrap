@@ -37,9 +37,11 @@ class PlacesController < ApplicationController
       array[0]
     end
     @recommended = []
-    @most_recent_checkins.each do |checkin|
-      checkin.user.favorite_places.each do |place|
-        @recommended << checkin.place if current_user.favorite_places.include?(place)
+    checkins.each do |checkin|
+      checkin.user.favorite_places.each do |fav_place|
+        current_user.favorite_places.each do |fav_place_current|
+          @recommended << checkin.place if fav_place.place == fav_place_current.place
+        end
       end
     end
   end
