@@ -1,5 +1,6 @@
 class Place < ApplicationRecord
   has_many :checkins
+
   has_many :favorite_places
   include PgSearch::Model
   pg_search_scope :search_by_name_and_location,
@@ -12,4 +13,8 @@ class Place < ApplicationRecord
     }
   TYPE_PLACE = ["Bar", "Club"]
   validates :place_type, inclusion: {in: TYPE_PLACE}
+
+
+  mount_uploader :photo, PhotoUploader
+
 end
