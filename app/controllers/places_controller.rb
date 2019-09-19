@@ -26,7 +26,7 @@ class PlacesController < ApplicationController
 
   def recommended
     @place = Place.new
-    places = Place.all
+    @places = Place.all
     checkins = CheckIn.all
     @most_recent_checkins = checkins.select {|checkin|
       (Time.new - 18_000) < checkin.created_at
@@ -54,6 +54,21 @@ class PlacesController < ApplicationController
     end
   end
 
-  def checkin
+  def show
+    checkins = CheckIn.all
+    @place = Place.find(params[:id])
+    @most_recent_checkins = checkins.select {|checkin|
+      (Time.new - 18_000) < checkin.created_at
+    }
+    @place_checkins_history = checkins.select do |checkin|
+      checkin.place == @place
+    end
+    @place_checkins_history = @place_checkins_history.sort_by {|checkin| checkin.created_at}
+  end
+
+  private
+
+  def set_params
+    params.require(:place).permit[:name, :location, :place_type, :description, :photo]
   end
 end
