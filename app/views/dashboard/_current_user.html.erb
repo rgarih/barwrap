@@ -1,36 +1,30 @@
 <div class="container">
   <div class = "d-flex flex-row-reverse db-highlight" >
-      <i class="fas fa-pen"> </i>
+    <i class="fas fa-pen"> </i>
   </div>
-
-  <p><%= @user.first_name %> <%= @user.last_name %></p>
-
+  <p class= "name"><%= @user.first_name %> <%= @user.last_name %></p>
   <%= cl_image_tag @user.photo, height: 150, width: 150, crop: :fill, class: "rounded-circle" %>
-
-  <%= @user.username %>
+  <p>@<%= @user.username %></p>
   <p>Follows <%= link_to @followings_count, friend_list_dashboard_path(@user, friend_type: "follows")%>
   Followers <%= link_to @followers_count, friend_list_dashboard_path(@user, friend_type: "followers")%></p>
+  <div class="d-flex justify-content-around">
+    <div class="border1">
+      <div class="border"></div>
+    </div>
+    <div class="textor">
+      <p class = "history-title">History</p>
+    </div>
+    <div class="border2">
+      <div class="border"></div>
+    </div>
+  </div>
 
-
-
-
-<%= @user.location %><br>
-<%= @user.gender %><br>
-<%= @user.username %><br>
-<%= @user.bio %><br>
-<%= @user.age %>
-<% if current_user == @user %>
-  <%= link_to "EDIT", edit_dashboard_path(@user) %>
-  <% else %>
-  <%= render @user %>
-<% end %>
-
-<p>Follows <%= link_to @followings_count, friend_list_dashboard_path(@user, friend_type: "follows")%></p>
-<p>Followers <%= link_to @followers_count, friend_list_dashboard_path(@user, friend_type: "followers")%></p>
-
-<p>FEED</p>
-<% @checkin.each do |notification| %>
-<%=  notification.comment %>
-<%=  notification.place.name %> <br>
-<% end %>
+  <% @checkin.each do |checkin| %>
+    <div class="card-product">
+      <div class="card-product-infos">
+        <h2> checkin </h2>
+        <p>Product description with <strong>relevant info</strong> only.</p>
+      </div>
+    </div>
+  <%end %>
 </div>
