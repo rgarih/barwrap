@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 
   def update
     @user.update(user_params)
-    redirect_to places_checkin_path
+    redirect_to  check_ins_path
   end
 
   private
