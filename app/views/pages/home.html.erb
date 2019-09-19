@@ -7,7 +7,7 @@
 
 <p> <span id="landing-text"></span></p>
 <% if user_signed_in? %>
-<%= link_to "Start", places_checkin_path %>
+<%= link_to "Start",  check_ins_path %>
 <% else %>
 <%= link_to "Start", new_user_session_path %>
 <% end %>
