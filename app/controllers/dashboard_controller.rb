@@ -1,6 +1,7 @@
 class DashboardController < ApplicationController
   def profile
-     @users = User.where.not(id: current_user.id)
+
+    @users = User.where.not(id: current_user.id)
     @user = User.find(params[:id])
     @followings_count = @user.followings.count
     @followers_count = @user.followers.count

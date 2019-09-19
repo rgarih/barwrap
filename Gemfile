@@ -19,6 +19,7 @@ gem 'faker'
 gem 'cloudinary', '~> 1.9.1'
 gem 'carrierwave', '~> 1.2'
 gem 'pg_search', '~> 2.3.0'
+gem 'geocoder'
 
 
 group :development do
