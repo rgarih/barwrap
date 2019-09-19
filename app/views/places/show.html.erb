@@ -38,13 +38,18 @@
             </div>
             <div class="checkin-content">
               <p><%= checkin.comment %></p>
+            <% if !checkin.photo.nil? %>
+              <div class="checkin-photo">
+                <%= cl_image_tag(checkin.photo, :height => 50, :crop => "pad") %>
+              </div>
+            <% end %>
             </div>
             <div class="checkin-time">
               <p><%= distance_of_time_in_words(Time.now, checkin.created_at) %></p>
             </div>
           </div>
           <%= link_to profile_dashboard_path(checkin.user) do %>
-          <%= cl_image_tag checkin.user.photo %>
+          <%= cl_image_tag checkin.user.photo , class:"check-avatar"%>
           <% end %>
         </div>
         <% end %>

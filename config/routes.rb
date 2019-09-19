@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
 
+
   get 'places/map'
   get 'places/recommended'
-  get 'places/checkin'
-  resources :places, only: [:index, :show]
+
+  resources :check_ins, only:[:index]
+
+  resources :places, only: [:index]
+  resources :places, only: [:show] do
+    resources :check_ins, only:[:new, :create]
+  end
+
 
   resources :users , only:[:index, :edit, :update] do
     member do

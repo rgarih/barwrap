@@ -8,7 +8,7 @@
   justify-content: space-between;
   margin-bottom: 10px;
 
-  img {
+  .check-avatar{
     height: 50px;
     width: 50px;
     border-radius: 50%;
@@ -36,6 +36,12 @@
     margin: 10px;
     width: 240px;
     overflow-wrap: break-word;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    .checkin-photo{
+      border-radius: 6px;
+    }
   }
 }
 
@@ -57,5 +63,5 @@
 }
 
 .checkin .checkin-infos {
-  padding: 16px;
+  padding: 5px;
 }
