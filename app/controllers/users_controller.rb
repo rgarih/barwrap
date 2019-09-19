@@ -29,13 +29,13 @@ class UsersController < ApplicationController
 
   def update
     @user.update(user_params)
+    redirect_to places_checkin_path
   end
 
   private
 
   def set_user
     @user = User.find(params[:id])
-    redirect_to places_checkin_path
   end
 
   def user_params
