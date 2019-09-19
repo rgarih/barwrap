@@ -9,7 +9,7 @@ class PlacesController < ApplicationController
       @markers << {
         lat: place.latitude,
         lng: place.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { place: place}),
+        infoWindow: render_to_string(partial: "info_window", locals: { place: place})
       }
     end
   end
