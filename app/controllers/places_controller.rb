@@ -14,17 +14,6 @@ class PlacesController < ApplicationController
     end
   end
 
-  def show
-    @place = Place.find(params[:id])
-      raise
-    @markers = []
-    @markers << {
-        lat: @place.latitude,
-        lng: @place.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { place: @place})
-      }
-  end
-
   def recommended
     @place = Place.new
     @places = Place.all
@@ -58,6 +47,12 @@ class PlacesController < ApplicationController
   def show
     checkins = CheckIn.all
     @place = Place.find(params[:id])
+    @markers = []
+    @markers << {
+        lat: @place.latitude,
+        lng: @place.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { place: @place}),
+    }
     @most_recent_checkins = checkins.select {|checkin|
       (Time.new - 18_000) < checkin.created_at
     }
