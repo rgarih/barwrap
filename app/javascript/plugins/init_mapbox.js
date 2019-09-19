@@ -5,8 +5,8 @@ mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
 return new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/dark-v10',
-    center: [32.062238, 34.774845],
-    zoom: 3
+    center: [34.774845, 32.062238],
+    zoom: 12
   });
 };
 const addMarkersToMap = (map, markers) => {
@@ -27,6 +27,14 @@ markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
 const initMapbox = () => {
 if (mapElement) {
 const map = buildMap();
+map.addControl(new mapboxgl.GeolocateControl({
+positionOptions: {
+enableHighAccuracy: true
+},
+trackUserLocation: true
+}));
+
+
 const markers = JSON.parse(mapElement.dataset.markers);
 addMarkersToMap(map, markers);
 fitMapToMarkers(map, markers);

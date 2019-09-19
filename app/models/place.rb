@@ -3,7 +3,7 @@ class Place < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_location?
   has_many :checkins
 
-  has_many :favorite_places
+  has_many :favorite_places, dependent: :destroy
   include PgSearch::Model
   pg_search_scope :search_by_name_and_location,
     against: [:name, :location],

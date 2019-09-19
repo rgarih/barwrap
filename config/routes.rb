@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :places, only: [:index]
+  resources :places, only: [:index, :show]
   get 'places/map'
   get 'places/recommended'
   get 'places/checkin'

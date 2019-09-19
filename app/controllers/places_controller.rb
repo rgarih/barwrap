@@ -14,6 +14,15 @@ class PlacesController < ApplicationController
     end
   end
 
+  def show
+    @place = Place.find(params[:id])
+    @markers = []
+    @markers << {
+        lat: @place.latitude,
+        lng: @place.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { place: @place}),
+      }
+  end
 
   def recommended
     @place = Place.new
