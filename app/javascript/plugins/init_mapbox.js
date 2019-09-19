@@ -32,4 +32,7 @@ addMarkersToMap(map, markers);
 fitMapToMarkers(map, markers);
   }
 };
+
+initMapbox();
+
 export { initMapbox };
