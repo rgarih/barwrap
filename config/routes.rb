@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'places/map'
   get 'places/recommended'
   get 'places/checkin'

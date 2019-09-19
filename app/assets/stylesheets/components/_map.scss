@@ -14,3 +14,13 @@ g {
 circle {
   fill: white;
 }
+
+
+
+.mapboxgl-user-location-dot::after {
+  background-color:#FF0042;
+ }
+
+// .mapboxgl-user-location-dot::before {
+//     background-color: white;
+//   }
