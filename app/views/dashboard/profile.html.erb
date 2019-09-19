@@ -1,24 +1,9 @@
-<%= @user.first_name %><br>
-<%= @user.last_name %> <br>
-<%= @user.location %><br>
-<%= @user.gender %><br>
-<%= @user.username %><br>
-<%= @user.bio %><br>
-<%= @user.age %>
-<%= cl_image_tag @user.photo, height: 300, width: 400, crop: :fill %>
-<% if current_user == @user %>
-  <%= link_to "EDIT", edit_dashboard_path(@user) %>
-  <% else %>
-  <%= render @user %>
+<% if params[:id].to_i == current_user.id %>
+
+<%= render 'current_user' %>
+
+<% else %>
+
+<%= render 'other_user' %>
+
 <% end %>
-
-<p>Follows <%= link_to @followings_count, friend_list_dashboard_path(@user, friend_type: "follows")%></p>
-<p>Followers <%= link_to @followers_count, friend_list_dashboard_path(@user, friend_type: "followers")%></p>
-
-<p>FEED</p>
-<% @checkin.each do |notification| %>
-<%=  notification.comment %>
-<%=  notification.place.name %> <br>
-<% end %>
-
-
