@@ -22,6 +22,9 @@
           <img class="icon-batwrap" src="https://img.icons8.com/wired/64/000000/speaker.png"><p> now playing <strong><%= @last_checkin.type_of_music%></strong> </p>
         </div>
         <% end %>
+        <div class="create-checkin-button">
+          <%= link_to "Check In", new_place_check_in_path(@place), class:"btn btn-light"   %>
+        </div>
       </div>
     </div>
   </div>
