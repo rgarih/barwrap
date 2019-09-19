@@ -13,17 +13,17 @@
   <body class=<% if current_user && !current_page?(root_path) %>"body-black"<% end %>>
     <%= render 'shared/flashes' %>
     <%= yield %>
-<!--     <div class="footer">
+    <div class="footer">
       <div class="tab-nav">
-        <button type="button" class="btn btn-secondary"></button>
+        <i class="fas fa-bars"></i>
       </div>
       <div class="tab-nav">
-        <button type="button" class="btn btn-secondary">Secondary</button>
+        <i class="fas fa-search"></i>
       </div>
       <div class="tab-nav">
-        <button type="button" class="btn btn-secondary">Secondary</button>
+        <i class="fas fa-globe-europe"></i>
       </div>
-    </div> -->
+    </div>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
     <%= yield(:after_js) %>
