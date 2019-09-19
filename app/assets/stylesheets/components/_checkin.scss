@@ -1,21 +1,61 @@
 .checkin{
+  overflow: hidden;
+  height: 120px;
+  background: black;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
-  height: 160px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
 
-  p{
-    color: white;
+  img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
   }
   .checkin-location{
     display: flex;
+    width: 100px;
+
+    img {
+      height: 12px;
+      width: 12px;
+    }
   }
   .checkin-time{
-    position: relative;
-    top: 90px;
-    right: 85px;
     opacity: 0.7;
-    font-size: 13px;
+    width: 100px;
+    text-align: left; ;
+
+
+    p{
+      font-size: 10px;
+    }
   }
   .checkin-content{
-    align-self: center;
+    margin: 10px;
+    width: 240px;
+    overflow-wrap: break-word;
   }
+}
+
+
+
+
+.checkin h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.checkin p {
+  color: white;
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+}
+
+.checkin .checkin-infos {
+  padding: 16px;
 }

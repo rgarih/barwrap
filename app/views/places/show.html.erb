@@ -3,7 +3,7 @@
 </div>
 <div class="container container-place-page">
   <div class="row">
-    <div class="col-6">
+    <div class="col-12">
       <% counter = 0 %>
       <% @most_recent_checkins.each do |checkin| %>
       <% if checkin.place == @place %>
@@ -13,15 +13,16 @@
       <% end %>
       <div class="place-details">
         <% if counter == 0 %>
-        <p>Be the first tonight to check in <%= @palce.name %></p>
+        <img class="icon-batwrap" src="https://img.icons8.com/cotton/64/000000/raise-a-hand-to-answer--v2.png"><p><p>Be the first tonight to check in <%= @place.name %></p>
         <% else %>
-        <img class="icon-batwrap" src="https://img.icons8.com/cotton/64/000000/raise-a-hand-to-answer--v2.png"><p>  <strong><%= counter %></strong> people are here!</p>
-        <img class="icon-batwrap" src="https://img.icons8.com/wired/64/000000/speaker.png"><p> now playing <strong><%= @last_checkin.type_of_music%></strong> </p>
+        <div class="how-many-type-music">
+          <img class="icon-batwrap" src="https://img.icons8.com/cotton/64/000000/raise-a-hand-to-answer--v2.png"><p>  <strong><%= counter %></strong> people are here!</p>
+        </div>
+        <div class="how-many-type-music">
+          <img class="icon-batwrap" src="https://img.icons8.com/wired/64/000000/speaker.png"><p> now playing <strong><%= @last_checkin.type_of_music%></strong> </p>
+        </div>
         <% end %>
       </div>
-    </div>
-    <div class="col-6">
-      <p>something should be here</p>
     </div>
   </div>
   <hr>
@@ -31,16 +32,33 @@
         <h2>Check-ins</h2>
         <% @place_checkins_history.each do |checkin| %>
         <div class="checkin">
+          <div class="checkin-infos">
+            <div class="checkin-location">
+              <img class="icon-batwrap" src="https://img.icons8.com/material/24/000000/worldwide-location--v1.png"><p><%=checkin.place.name%></p>
+            </div>
+            <div class="checkin-content">
+              <p><%= checkin.comment %></p>
+            </div>
+            <div class="checkin-time">
+              <p><%= distance_of_time_in_words(Time.now, checkin.created_at) %></p>
+            </div>
+          </div>
+
+          <%= link_to profile_dashboard_path(checkin.user) do %>
+          <%= cl_image_tag checkin.user.photo %>
+          <% end %>
+        </div>
+        <!--         <div class="checkin">
           <div class="checkin-location">
-            <img class="icon-batwrap" src="https://img.icons8.com/material/24/000000/worldwide-location--v1.png"><p><%=checkin.place.name%></p>
+            <img class="icon-batwrap" src="https://img.icons8.com/material/24/000000/worldwide-location--v1.png"><p><%#=checkin.place.name%></p>
           </div>
           <div class="checkin-content">
             <p><%= checkin.comment %></p>
           </div>
           <div class="checkin-time">
-            <p><%= distance_of_time_in_words(Time.now, checkin.created_at) %></p>
+            <p><%#= distance_of_time_in_words(Time.now, checkin.created_at) %></p>
           </div>
-        </div>
+        </div> -->
         <% end %>
       </div>
     </div>
