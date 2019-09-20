@@ -1,0 +1,25 @@
+.footer{
+  position: fixed;
+  bottom: 0;
+  opacity: 0.8;
+  display: flex;
+  background-color: #1C1D23;
+  .tab-nav{
+    width: 33vw;
+    text-align: center;
+    height: 40px;
+  .fas{
+    color: white;
+    font-size: 25px;
+    padding: 9px;
+    }
+  }
+  .clicked{
+    background-color: #9e7dabf0;
+    .fas{
+    text-decoration: underline;
+    text-decoration-color: purple;
+
+    }
+  }
+}

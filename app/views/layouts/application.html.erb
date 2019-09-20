@@ -13,17 +13,23 @@
   <body class=<% if current_user && !current_page?(root_path) %>"body-black"<% end %>>
     <%= render 'shared/flashes' %>
     <%= yield %>
-<!--     <div class="footer">
-      <div class="tab-nav">
-        <button type="button" class="btn btn-secondary"></button>
+    <div class="footer">
+      <%= link_to check_ins_path do %>
+      <div class="tab-nav <% if current_page?(check_ins_path) %>clicked <% end %>">
+        <i class="fas fa-bars"></i>
       </div>
-      <div class="tab-nav">
-        <button type="button" class="btn btn-secondary">Secondary</button>
+      <% end %>
+      <%= link_to places_recommended_path do %>
+      <div class="tab-nav <% if current_page?(places_recommended_path) %>clicked <% end %>">
+        <i class="fas fa-search"></i>
       </div>
-      <div class="tab-nav">
-        <button type="button" class="btn btn-secondary">Secondary</button>
+      <% end %>
+      <%= link_to places_path do%>
+      <div class="tab-nav <% if current_page?(places_path) %>clicked <% end %>">
+        <i class="fas fa-globe-europe"></i>
       </div>
-    </div> -->
+      <% end %>
+    </div>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
     <%= yield(:after_js) %>
