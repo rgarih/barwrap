@@ -12,54 +12,60 @@
       <% end %>
       <% end %>
       <div class="place-details">
-        <% if counter == 0 %>
-        <img class="icon-batwrap" src="https://img.icons8.com/cotton/64/000000/raise-a-hand-to-answer--v2.png"><p><p>Be the first tonight to check in <%= @place.name %></p>
-        <% else %>
-        <div class="how-many-type-music">
-          <img class="icon-batwrap" src="https://img.icons8.com/cotton/64/000000/raise-a-hand-to-answer--v2.png"><p>  <strong><%= counter %></strong> people are here!</p>
-        </div>
-        <div class="how-many-type-music">
-          <img class="icon-batwrap" src="https://img.icons8.com/wired/64/000000/speaker.png"><p> now playing <strong><%= @last_checkin.type_of_music%></strong> </p>
-        </div>
-        <% end %>
-        <div class="create-checkin-button">
-          <%= link_to "Check In", new_place_check_in_path(@place), class:"btn btn-light"   %>
-        </div>
-      </div>
-    </div>
-  </div>
-  <hr>
-  <div class="row">
-    <div class="col-12">
-      <div class="check-in-container">
-        <h2>Check-ins</h2>
-        <% @place_checkins_history.each do |checkin| %>
-        <div class="checkin">
-          <div class="checkin-infos">
-            <div class="checkin-location">
-              <img class="icon-batwrap" src="https://img.icons8.com/material/24/000000/worldwide-location--v1.png"><p><%=checkin.place.name%></p>
-            </div>
-            <div class="checkin-content">
-              <p><%= checkin.comment %></p>
-            <% if !checkin.photo.nil? %>
-              <div class="checkin-photo">
-                <%= cl_image_tag(checkin.photo, :height => 50, :crop => "pad") %>
-              </div>
-            <% end %>
-            </div>
-            <div class="checkin-time">
-              <p><%= distance_of_time_in_words(Time.now, checkin.created_at) %></p>
-            </div>
+        <div class="place-details-left">
+          <% if counter == 0 %>
+          <div class="place-details-left-content">
+            <img class="icon-batwrap" src="https://img.icons8.com/cotton/64/000000/raise-a-hand-to-answer--v2.png"><p><p>Be the first tonight to check in <%= @place.name %></p>
           </div>
-          <%= link_to profile_dashboard_path(checkin.user) do %>
-          <%= cl_image_tag checkin.user.photo , class:"check-avatar"%>
+          <% else %>
+          <div class="how-many-type-music">
+            <img class="icon-batwrap" src="https://img.icons8.com/cotton/64/000000/raise-a-hand-to-answer--v2.png"><p>  <strong><%= counter %></strong> people are here!</p>
+          </div>
+          <div class="how-many-type-music">
+            <img class="icon-batwrap" src="https://img.icons8.com/wired/64/000000/speaker.png"><p> now playing <strong><%= @last_checkin.type_of_music%></strong> </p>
+          </div>
           <% end %>
         </div>
-        <% end %>
-
+        <%= link_to new_place_check_in_path(@place) do %>
+        <div class="checkin-plus">
+          <img src="https://img.icons8.com/nolan/64/000000/plus.png" class="create-checkin-button" >
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-12">
+    <div class="check-in-container">
+      <h2>Check-ins</h2>
+      <% @place_checkins_history.each do |checkin| %>
+      <div class="checkin">
+        <div class="checkin-infos">
+          <div class="checkin-location">
+            <img class="icon-batwrap" src="https://img.icons8.com/material/24/000000/worldwide-location--v1.png"><p><%=checkin.place.name%></p>
+          </div>
+          <div class="checkin-content">
+            <p><%= checkin.comment %></p>
+            <% if !checkin.photo.nil? %>
+            <div class="checkin-photo">
+              <%= cl_image_tag(checkin.photo, :height => 50, :crop => "pad") %>
+            </div>
+            <% end %>
+          </div>
+          <div class="checkin-time">
+            <p><%= distance_of_time_in_words(Time.now, checkin.created_at) %></p>
+          </div>
+        </div>
+        <%= link_to profile_dashboard_path(checkin.user) do %>
+        <%= cl_image_tag checkin.user.photo , class:"check-avatar"%>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 </div>
 <div
 id="map"
@@ -68,5 +74,3 @@ height: 400px;"
 data-markers="<%= @markers.to_json %>"
 data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 ></div>
-
-
