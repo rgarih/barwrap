@@ -1,8 +1,21 @@
 .place-details{
   display: flex;
   color: white;
+  align-items: center;
   margin: 7px;
+  justify-content: space-between;
   flex-wrap: wrap;
+  .place-details-left{
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    .place-details-left-content{
+      display: flex;
+    }
+  }
+  .create-checkin-button{
+    height: 45px;
+  }
   p{
     font-size: 12px;
     font-weight: 100;
@@ -24,6 +37,7 @@
 
   }
 .how-many-type-music{
-  flex-grow:1;
+  margin: 5px;
+  display: flex;
   text-align: center;
 }
