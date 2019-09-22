@@ -3,6 +3,7 @@
   position: fixed;
   bottom: 0;
   opacity: 0.8;
+  width: 100vw;
   display: flex;
   background-color: #1C1D23;
   height: 40px;
@@ -17,10 +18,9 @@
     }
   }
   .clicked{
-    background-color: #9e7dabf0;
     .fas{
-    text-decoration: underline;
-    text-decoration-color: purple;
+    color: #8046E5;
+    font-size: 28px;
 
     }
   }
