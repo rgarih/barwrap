@@ -6,6 +6,10 @@ Rails.application.routes.draw do
 
   resources :check_ins, only:[:index]
 
+  # authenticated :user do
+  #   root :to => "check_ins#index"
+  # end
+
   resources :places, only: [:index]
   resources :places, only: [:show] do
     resources :check_ins, only:[:new, :create]

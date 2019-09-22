@@ -6,26 +6,24 @@
       <div class="checkin">
         <div class="checkin-content">
           <% if !checkin.photo.nil? %>
-          <%= cl_image_tag(checkin.photo, :height => 50, :crop => "pad") %>
+          <%= cl_image_tag(checkin.photo) %>
           <div class="checkin-location">
             <p><%= link_to checkin.place.name, place_path(checkin.place) %></p>
           </div>
-
           <div class="checkin-comment">
             <%= link_to profile_dashboard_path(checkin.user) do %>
             <%= cl_image_tag checkin.user.photo , class:"check-avatar"%>
-            <p> <strong><%= checkin.user.username %></strong></p><tab>
-            <% end %>
-            <p> <%= checkin.comment %></p>
+            <p> <strong><%= checkin.user.username %></strong>
+              <% end %>
+            <%= checkin.comment %></p>
           </div>
-
           <% else %>
           <div class="checkin-comment">
             <%= link_to profile_dashboard_path(checkin.user) do %>
             <%= cl_image_tag checkin.user.photo , class:"check-avatar"%>
-            <p> <strong><%= checkin.user.username %></strong></p> <tab>
-            <% end %>
-            <p> <%= checkin.comment %></p>
+            <p> <strong><%= checkin.user.username %></strong>
+              <% end %>
+            <%= checkin.comment %></p>
           </div>
           <% end %>
         </div>
