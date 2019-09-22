@@ -1,6 +1,6 @@
 .checkin{
   overflow: hidden;
-  height: 120px;
+  height: auto;
   background: black;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
@@ -17,9 +17,9 @@
     display: flex;
     width: 100px;
 
-    img {
-      height: 12px;
-      width: 12px;
+    .icon-barwrap {
+      height: 18px;
+      width: 18px;
     }
   }
   .checkin-time{
@@ -29,7 +29,7 @@
 
 
     p{
-      font-size: 10px;
+      font-size: 12px;
     }
   }
   .checkin-content{
@@ -60,7 +60,7 @@
 
 .checkin p {
   color: white;
-  font-size: 12px;
+  font-size: 18px;
   line-height: 1.4;
   opacity: .7;
   margin-bottom: 0;
