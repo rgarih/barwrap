@@ -15,6 +15,7 @@
     <div id="yield-container">
       <%= yield %>
     </div>
+    <% if !current_user.first_name.nil?%>
     <div class="footer">
       <%= link_to check_ins_path do %>
       <div class="tab-nav <% if current_page?(check_ins_path) %>clicked <% end %>">
@@ -32,6 +33,7 @@
       </div>
       <% end %>
     </div>
+    <% end %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
     <%= yield(:after_js) %>
