@@ -15,7 +15,7 @@
     <div id="yield-container">
       <%= yield %>
     </div>
-    <% if !current_user.first_name.nil?%>
+    <% if current_user && !current_page?(edit_user_path(current_user)) %>
     <div class="footer">
       <%= link_to check_ins_path do %>
       <div class="tab-nav <% if current_page?(check_ins_path) %>clicked <% end %>">
