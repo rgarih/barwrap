@@ -21,7 +21,6 @@ class CheckInsController < ApplicationController
   def index
     @checkins = CheckIn.all.sort_by(&:created_at).reverse
   end
-
   private
 
   def set_params

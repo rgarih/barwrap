@@ -22,15 +22,15 @@
   background-color: #8044E5;
   text-align: center;
   display: block;
-  margin: 0 auto;
+  // margin: 0 auto;
   font-weight: bolder;
-  margin-left: 50px;
-  margin-right: 50px;
+  // margin-left: 50px;
+  // margin-right: 50px;
   border: 2px;
   border-radius: 20px;
-  width: 300px;
+  width: 330px;
   font-size: 24px;
-  margin: 0;
+  // margin: 0;
   margin-bottom: 40px;
 }
 .form-check-label {
@@ -122,4 +122,10 @@ h2.sign_up {
     font-size: 24px;
     width: 40vw;
   }
+}
+label {
+  color: white;
+}
+.form-inputs {
+  padding-top: 20px;
 }
