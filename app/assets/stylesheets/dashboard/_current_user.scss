@@ -17,56 +17,37 @@ color: $purple;
   font-size: 30px;
  }
 
+.avatar-list {
+  margin-right: 10px;
 
-.follower-card {
+ }
+.follow-list {
   display: flex;
   align-items: center;
   margin-bottom: 8px;
-  background: black;
-  color:white;
+  background-color: black;
   padding: 8px 16px;
-
+  color:white;
+  border: 1px solid rgb(235,235,235);
 }
 
-.follower-card .username-content {
-  color:white;
-  font-size: 10px;
+.name-list {
+  font-size:10px;
+  color: gray;
  }
 
-.follower-card .notification-content {
-  flex-grow: 1;
-  padding: 0 24px;
-}
 
-.follower-card p {
-  margin: 0;
-  line-height: 1.4;
-}
 
-.follower-card small {
-  color: #999999;
-  font-weight: bold;
-}
-.follower-card .notification-actions .follow-button {
-  opacity: 0;
-  display: flex;
-  transition: ease .3s;
-  border: 1px solid white;
-  color:white;
-}
-
-.follower-card.notification-actions {
-  opacity: 1;
-}
-
-.follower-card .notification-actions a {
+.follow-button a{
+  margin-left: 130px;
+  border: 3px solid white;
   color: white;
-  margin-left: 16px;
-  font-size: 14px;
-}
+  padding: 5px;
+  border-radius: 5px;
+ }
 
-// .notification .notification-actions a:{
-//   color: #555555;
-// }
+
+
+
 
 
