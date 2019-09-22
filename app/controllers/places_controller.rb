@@ -59,7 +59,7 @@ class PlacesController < ApplicationController
     @place_checkins_history = checkins.select do |checkin|
       checkin.place == @place
     end
-    @place_checkins_history = @place_checkins_history.sort_by {|checkin| checkin.created_at}
+    @place_checkins_history = @place_checkins_history.sort_by(&:created_at).reverse
   end
 
   private

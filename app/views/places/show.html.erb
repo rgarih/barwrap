@@ -1,4 +1,4 @@
-<div class="banner-place-page" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @place.photo %>)">
+<div class="banner-place-page">
   <%= @place.name %>
 </div>
 <div class="container container-place-page">
@@ -44,29 +44,35 @@
       <h2>Check-ins</h2>
       <% @place_checkins_history.each do |checkin| %>
       <div class="checkin">
-        <div class="checkin-infos">
-          <div class="checkin-location">
-            <img class="icon-barwrap"src="https://img.icons8.com/dusk/64/000000/user-location.png"><p><%=checkin.place.name%></p>
-          </div>
-          <div class="checkin-content">
-            <p><%= checkin.comment %></p>
-            <% if !checkin.photo.nil? %>
-            <div class="checkin-photo">
-              <%= cl_image_tag(checkin.photo, :height => 50, :crop => "pad") %>
+        <div class="checkin-content">
+          <% if !checkin.photo.nil? %>
+          <%= cl_image_tag(checkin.photo, :height => 50, :crop => "pad") %>
+          <div class="checkin-comment">
+              <%= link_to profile_dashboard_path(checkin.user) do %>
+              <%= cl_image_tag checkin.user.photo , class:"check-avatar"%>
+              <p> <strong><%= checkin.user.username %></strong></p><tab>
+              <% end %>
+              <p> <%= checkin.comment %></p>
             </div>
-            <% end %>
+          <% else %>
+          <div class="checkin-comment">
+              <%= link_to profile_dashboard_path(checkin.user) do %>
+              <%= cl_image_tag checkin.user.photo , class:"check-avatar"%>
+              <p> <strong><%= checkin.user.username %></strong></p> <tab>
+              <% end %>
+              <p> <%= checkin.comment %></p>
           </div>
-          <div class="checkin-time">
-            <p><%= distance_of_time_in_words(Time.now, checkin.created_at) %></p>
-          </div>
+          <% end %>
         </div>
-        <%= link_to profile_dashboard_path(checkin.user) do %>
-        <%= cl_image_tag checkin.user.photo , class:"check-avatar"%>
-        <% end %>
+        <div class="checkin-time">
+          <p><%= distance_of_time_in_words(Time.now, checkin.created_at) %></p>
+        </div>
       </div>
-      <% end %>
     </div>
+    <hr>
+    <% end %>
   </div>
+</div>
 </div>
 </div>
 <div
