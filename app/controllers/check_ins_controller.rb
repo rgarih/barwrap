@@ -19,7 +19,7 @@ class CheckInsController < ApplicationController
   end
 
   def index
-    @checkins = CheckIn.all.sort_by(&:created_at)
+    @checkins = CheckIn.all.sort_by(&:created_at).reverse
   end
 
   private
