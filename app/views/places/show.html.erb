@@ -54,11 +54,11 @@
     <div class="check-in-container">
       <h2>Check-ins</h2>
       <% @place_checkins_history.each do |checkin| %>
-      <div class="checkin">
+      <div class="checkin dropdown-checkin">
         <div class="checkin-content">
           <% if !checkin.photo.nil? %>
-          <%= cl_image_tag(checkin.photo) %>
-          <div class="checkin-comment">
+          <%= cl_image_tag checkin.photo, id:"snapshot" %>
+          <div class="checkin-comment" data-toggle="dropdown">
             <%= link_to profile_dashboard_path(checkin.user) do %>
             <%= cl_image_tag checkin.user.photo , class:"check-avatar"%>
             <p> <strong><%= checkin.user.username %></strong>
@@ -93,4 +93,8 @@ height: 400px;"
 data-markers="<%= @markers.to_json %>"
 data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 ></div>
+
+  <%= content_for :after_js do %>
+  <%= javascript_pack_tag 'show' %>
+  <% end %>
 
