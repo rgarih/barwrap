@@ -1,5 +1,16 @@
 <div class="banner-place-page">
   <%= @place.name %>
+  <div class="favorite-place-button">
+    <%if @favorited %>
+    <%=  link_to favorite_place_path(@place, type: "unfavorite"), method: :put do %>
+    <i class="fas fa-heart"></i>
+    <% end %>
+    <% else %>
+    <%=  link_to favorite_place_path(@place, type: "favorite"), method: :put do %>
+    <i class="far fa-heart"></i>
+    <% end %>
+    <% end %>
+  </div>
 </div>
 <div class="container container-place-page">
   <div class="row">
@@ -48,19 +59,19 @@
           <% if !checkin.photo.nil? %>
           <%= cl_image_tag(checkin.photo) %>
           <div class="checkin-comment">
-              <%= link_to profile_dashboard_path(checkin.user) do %>
-              <%= cl_image_tag checkin.user.photo , class:"check-avatar"%>
-              <p> <strong><%= checkin.user.username %></strong>
+            <%= link_to profile_dashboard_path(checkin.user) do %>
+            <%= cl_image_tag checkin.user.photo , class:"check-avatar"%>
+            <p> <strong><%= checkin.user.username %></strong>
               <% end %>
-              <%= checkin.comment %></p>
-            </div>
+            <%= checkin.comment %></p>
+          </div>
           <% else %>
           <div class="checkin-comment">
-              <%= link_to profile_dashboard_path(checkin.user) do %>
-              <%= cl_image_tag checkin.user.photo , class:"check-avatar"%>
-              <p> <strong><%= checkin.user.username %></strong></p> <tab>
-              <% end %>
-              <p> <%= checkin.comment %></p>
+            <%= link_to profile_dashboard_path(checkin.user) do %>
+            <%= cl_image_tag checkin.user.photo , class:"check-avatar"%>
+            <p> <strong><%= checkin.user.username %></strong></p> <tab>
+            <% end %>
+            <p> <%= checkin.comment %></p>
           </div>
           <% end %>
         </div>
@@ -82,3 +93,4 @@ height: 400px;"
 data-markers="<%= @markers.to_json %>"
 data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 ></div>
+
