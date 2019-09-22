@@ -1,8 +1,52 @@
-<li data-user=<%= user.id %>>
-  <%= link_to user.first_name , profile_dashboard_path(user) %>
-  <% if current_user.is_following?(user.id) %>
-    <%= link_to "Unfollow", unfollow_user_path(user.id), method: :post, remote: true %>
-  <% else %>
-    <%= link_to "Follow", follow_user_path(user.id), method: :post, remote: true %>
-  <% end %>
-</li>
+<!-- <div data-user=<%= user.id %>>
+    <div class="row">
+      <div class="col-8">
+        <div class = "follow-avatar">
+          <%= cl_image_tag @user.photo, height: 50, width: 50, crop: :fill, class: "rounded-circle" %>
+        </div>
+        <div>
+          <div class = "username-row">
+          <%= user.username %>
+          </div>
+          <div class = "name-row">
+          <%= user.first_name %>
+          <%= user.last_name %>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class = "follow-button">
+        <% if current_user.is_following?(user.id) %>
+          <%= link_to "Unfollow", unfollow_user_path(user.id), method: :post, remote: true %>
+        <% else %>
+          <%= link_to "Follow", follow_user_path(user.id), method: :post, remote: true %>
+        <% end %>
+        </div>
+      </div>
+    </div>
+</div>
+ -->
+
+<div data-user=<%= user.id %>>
+  <div class="follower-card">
+    <%= cl_image_tag user.photo, height: 50, width: 50, crop: :fill, class: "rounded-circle" %>
+    <div class="username-content">
+      <%= user.username %>
+      <div class = "name-row">
+      <%= user.first_name %>
+      <%= user.last_name %>
+      </div>
+    </div>
+
+    <div class="notification-actions">
+       <div class = "follow-button">
+          <% if current_user.is_following?(user.id) %>
+            <%= link_to "Unfollow", unfollow_user_path(user.id), method: :post, remote: true %>
+          <% else %>
+            <%= link_to "Follow", follow_user_path(user.id), method: :post, remote: true %>
+          <% end %>
+        </div>
+    </div>
+  </div>
+
+</div>
