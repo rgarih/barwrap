@@ -21,32 +21,40 @@
 
   <div class="row">
     <div class="col-12">
-      <div class="check-in-container">
-        <h2>Check-ins</h2>
+      <div class="checkin">
         <% @checkin.each do |notification| %>
-        <div class="checkin">
-          <div class="checkin-infos">
-            <div class="checkin-location">
-              <img class="icon-batwrap" src="https://img.icons8.com/material/24/000000/worldwide-location--v1.png"><p><%=notification.place.name%></p>
-            </div>
-            <div class="checkin-content">
-              <p><%= notification.comment %></p>
-            <% if !notification.photo.nil? %>
-              <div class="checkin-photo">
-                <%= cl_image_tag(notification.photo, :height => 50, :crop => "pad") %>
-              </div>
-            <% end %>
-            </div>
-            <div class="checkin-time">
-              <p><%= distance_of_time_in_words(Time.now, notification.created_at) %></p>
-            </div>
+        <div class="checkin-content">
+          <% if !notification.photo.nil? %>
+          <%= cl_image_tag(notification.photo) %>
+          <div class="checkin-location">
+            <p><%= link_to notification.place.name, place_path(notification.place) %></p>
           </div>
+          <div class="checkin-comment">
+            <%= link_to profile_dashboard_path(notification.user) do %>
+            <%= cl_image_tag notification.user.photo , class:"check-avatar"%>
+            <p> <strong><%= notification.user.username %></strong>
+              <% end %>
+            <%= notification.comment %></p>
+          </div>
+          <% else %>
+          <div class="checkin-comment">
+            <%= link_to profile_dashboard_path(notification.user) do %>
+            <%= cl_image_tag notification.user.photo , class:"check-avatar"%>
+            <p><strong><%= notification.user.username %></strong>
+              <% end %>
+            <%= notification.comment %></p>
+          </div>
+          <% end %>
+        </div>
+        <div class="checkin-time">
+          <p><%= distance_of_time_in_words(Time.now, notification.created_at) %></p>
         </div>
         <% end %>
-
+        <hr>
       </div>
     </div>
   </div>
+
 
 
 
