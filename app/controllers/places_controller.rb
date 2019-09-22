@@ -38,7 +38,9 @@ class PlacesController < ApplicationController
     checkins.each do |checkin|
       checkin.user.favorite_places.each do |fav_place|
         current_user.favorite_places.each do |fav_place_current|
-          @recommended << checkin.place if fav_place.place == fav_place_current.place
+          if !@recommended.include?(checkin.place)
+            @recommended << checkin.place if fav_place.place == fav_place_current.place
+          end
         end
       end
     end
@@ -59,7 +61,30 @@ class PlacesController < ApplicationController
     @place_checkins_history = checkins.select do |checkin|
       checkin.place == @place
     end
+
     @place_checkins_history = @place_checkins_history.sort_by(&:created_at).reverse
+    fav_places_arr = []
+      current_user.favorite_places.each do |fav|
+        fav_places_arr.push(fav.place)
+      end
+     @favorited = fav_places_arr.include?(@place)
+  end
+
+  def favorite
+    @place = Place.find(params[:id])
+    type = params[:type]
+    if type == "favorite"
+      current_user.favorites << @place
+      redirect_back fallback_location: check_ins_path
+
+    elsif type == "unfavorite"
+      current_user.favorites.delete(@place)
+      redirect_back fallback_location: check_ins_path
+
+    else
+      # Type missing, nothing happens
+      redirect_back fallback_location: check_ins_path, notice: 'Nothing happened.'
+    end
   end
 
   private
