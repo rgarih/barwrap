@@ -16,8 +16,7 @@
     }
   }
   .checkin-location{
-    display: flex;
-    width: auto;
+    width: 100%;
   }
   .checkin-time{
     opacity: 0.7;
@@ -31,7 +30,6 @@
     }
   }
   .checkin-content{
-    margin: 10px;
     width: 100%;
     overflow-wrap: break-word;
     display: flex;
@@ -40,6 +38,7 @@
     img {
       width: 100%;
       height: auto;
+      max-height: 300px;
       border-radius: 6px;
     }
   }
