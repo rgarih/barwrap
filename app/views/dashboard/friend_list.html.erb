@@ -1,3 +1,9 @@
+<% if params["friend_type"] == "follows" %>
+<h1 style= "color: white; margin-left: 10px; margin-top: 12px;">Following</h1>
+<% else  %>
+<h1 style= "color: white; margin-left: 10px; margin-top: 12px;"> Followers </h1>
+<% end %>
+
 <% unless  @users.count == 0 %>
   <% @users.each do |friend| %>
     <div class= "following-container">
