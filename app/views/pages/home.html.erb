@@ -1,22 +1,13 @@
-
-
 <div class="home-container">
-
-<h1>Welcome to BarWrap</h1>
-<%= image_tag("landing-image.png") %>
-
-<p> <span id="landing-text"></span></p>
-<% if user_signed_in? %>
-<%= link_to "Start",  check_ins_path %>
-<% else %>
-<%= link_to "Start", new_user_session_path %>
-<% end %>
-</div>
- <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-
-
-
-  <%= content_for :after_js do %>
-    <%= javascript_pack_tag 'home' %>
+  <h1>Welcome to BarWrap</h1>
+  <%= image_tag("landing-image.png") %>
+  <p> <span id="landing-text"></span></p>
+  <% if user_signed_in? %>
+    <%= link_to "Start",  check_ins_path %>
+  <% else %>
+    <%= link_to "Start", new_user_session_path %>
   <% end %>
-
+</div>
+<%= content_for :after_js do %>
+<%= javascript_pack_tag 'home' %>
+<% end %>
