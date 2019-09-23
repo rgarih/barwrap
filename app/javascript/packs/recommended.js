@@ -8,6 +8,5 @@ const labels = document.querySelectorAll('.label-check');
   })
 }
 
-
 multiSelectRecommendedPage();
 
