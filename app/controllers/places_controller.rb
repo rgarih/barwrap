@@ -11,14 +11,11 @@ class PlacesController < ApplicationController
       }
     end
     @places = Place.geocoded
-
-    @last_checkin_of_each_place = []
-
     if params[:query].present?
       @places = Place.search_by_name_and_location(params[:query])
-
+    end
+    if params[:search].present?
       if params[:search][:types].present?
-
         @places = @places.select do |place|
           unless place.check_ins.last.nil?
             params[:search][:types].include?(place.check_ins.last.type_of_music)
@@ -26,7 +23,6 @@ class PlacesController < ApplicationController
         end
       end
     end
-
     @markers = []
     @places.each do |place|
       @markers << {
