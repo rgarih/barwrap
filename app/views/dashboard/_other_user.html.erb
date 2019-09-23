@@ -33,8 +33,7 @@
       <div class="checkin">
         <% @checkin.each do |notification| %>
         <div class="checkin-content">
-          <% if !notification.photo.nil? %>
-          <%= cl_image_tag(notification.photo) %>
+          <% if !notification.photo.model[:photo].nil? %>
           <div class="checkin-location">
             <p><%= link_to notification.place.name, place_path(notification.place) %></p>
           </div>
@@ -45,7 +44,14 @@
               <% end %>
             <%= notification.comment %></p>
           </div>
+          <div class="dropdown-checkin">
+            <%= cl_image_tag notification.photo, class:"snapshot", style:"  display: none;" %>
+            <i class="fas fa-ellipsis-h"></i>
+          </div>
           <% else %>
+          <div class="checkin-location">
+            <p><%= link_to notification.place.name, place_path(notification.place) %></p>
+          </div>
           <div class="checkin-comment">
             <%= link_to profile_dashboard_path(notification.user) do %>
             <%= cl_image_tag notification.user.photo , class:"check-avatar"%>
@@ -63,8 +69,7 @@
       </div>
     </div>
   </div>
-
-
-
-
 </div>
+<%= content_for :after_js do %>
+  <%= javascript_pack_tag 'show' %>
+<% end %>

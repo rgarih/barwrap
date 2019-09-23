@@ -5,6 +5,7 @@ class DashboardController < ApplicationController
     @followings_count = @user.followings.count
     @followers_count = @user.followers.count
     @checkin = @user.check_ins.order("created_at DESC")
+    @favorite_places = current_user.favorites
 
   end
 
