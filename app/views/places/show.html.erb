@@ -1,5 +1,16 @@
 <div class="banner-place-page">
   <%= @place.name %>
+  <div class="favorite-place-button">
+    <%if @favorited %>
+    <%=  link_to favorite_place_path(@place, type: "unfavorite"), method: :put do %>
+    <i class="fas fa-heart"></i>
+    <% end %>
+    <% else %>
+    <%=  link_to favorite_place_path(@place, type: "favorite"), method: :put do %>
+    <i class="far fa-heart"></i>
+    <% end %>
+    <% end %>
+  </div>
 </div>
 <div class="container container-place-page">
   <div class="row">
@@ -38,29 +49,31 @@
   </div>
 </div>
 <hr>
-<div class="row">
-  <div class="col-12">
-    <div class="check-in-container">
-      <h2>Check-ins</h2>
-      <% @place_checkins_history.each do |checkin| %>
+<div class="check-in-container">
+  <h2>Check-ins</h2>
+  <% @place_checkins_history.each do |checkin| %>
+    <div class="col-12">
       <div class="checkin">
         <div class="checkin-content">
-          <% if !checkin.photo.nil? %>
-          <%= cl_image_tag(checkin.photo) %>
+          <% if !checkin.photo.model[:photo].nil? %>
           <div class="checkin-comment">
-              <%= link_to profile_dashboard_path(checkin.user) do %>
+            <%= link_to profile_dashboard_path(checkin.user) do %>
               <%= cl_image_tag checkin.user.photo , class:"check-avatar"%>
               <p> <strong><%= checkin.user.username %></strong>
-              <% end %>
-              <%= checkin.comment %></p>
-            </div>
+            <% end %>
+            <%= checkin.comment %></p>
+          </div>
+          <div class="dropdown-checkin">
+            <%= cl_image_tag checkin.photo, class:"snapshot" %>
+            <i class="fas fa-ellipsis-h"></i>
+          </div>
           <% else %>
           <div class="checkin-comment">
-              <%= link_to profile_dashboard_path(checkin.user) do %>
+            <%= link_to profile_dashboard_path(checkin.user) do %>
               <%= cl_image_tag checkin.user.photo , class:"check-avatar"%>
-              <p> <strong><%= checkin.user.username %></strong></p> <tab>
-              <% end %>
-              <p> <%= checkin.comment %></p>
+              <p> <strong><%= checkin.user.username %></strong>
+            <% end %>
+             <%= checkin.comment %></p>
           </div>
           <% end %>
         </div>
@@ -73,8 +86,7 @@
     <% end %>
   </div>
 </div>
-</div>
-</div>
+
 <div
 id="map"
 style="width: 100%;
@@ -83,3 +95,6 @@ data-markers="<%= @markers.to_json %>"
 data-markers-check="<%= @markersCheckIn.to_json %>"
 data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 ></div>
+<%= content_for :after_js do %>
+  <%= javascript_pack_tag 'show' %>
+<% end %>

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   resources :places, only: [:index]
   resources :places, only: [:show] do
+    put :favorite, on: :member
     resources :check_ins, only:[:new, :create]
   end
 
@@ -34,7 +35,4 @@ Rails.application.routes.draw do
       get 'friend_list'
     end
   end
-
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
