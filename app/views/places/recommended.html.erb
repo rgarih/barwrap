@@ -63,13 +63,13 @@
     <hr >
     <div class="row justify-content-md-center">
       <div class="col-12 most-talked-about">
-        <h2>Recommended for You</h2>
+        <h2>Your Favoites</h2>
         <div class="most-talked-about-container">
           <div class="slider">
-            <% if @recommended.empty? %>
-            <% @recommended = @places %>
+            <% if @favorite_places.empty? %>
+            <% @favorite_places = @places %>
             <% end %>
-            <% @recommended.each do |place| %>
+            <% @favorite_places.each do |place| %>
             <div class="card place-card">
               <%= link_to place_path(place) do %>
               <% if place.photo %>
