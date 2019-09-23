@@ -55,11 +55,11 @@
         <div class="checkin-time">
           <p><%= distance_of_time_in_words(Time.now, notification.created_at) %></p>
         </div>
-        <% end %>
         <hr>
       </div>
     </div>
   </div>
+  <% end %>
 </div>
 <%= content_for :after_js do %>
   <%= javascript_pack_tag 'show' %>
