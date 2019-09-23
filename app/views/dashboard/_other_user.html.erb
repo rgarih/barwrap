@@ -3,7 +3,6 @@
   <%= cl_image_tag @user.photo, height: 150, width: 150, crop: :fill, class: "rounded-circle" %>
   <p>@<%= @user.username %></p>
 
-
  <div class = "follow-button-user">
     <% if current_user.is_following?(@user.id) %>
       <%= link_to "Unfollow", unfollow_user_path(@user.id), method: :post, remote: true %>
@@ -13,6 +12,10 @@
   </div>
   <p>Follows <%= link_to @followings_count, friend_list_dashboard_path(@user, friend_type: "follows")%>
   Followers <%= link_to @followers_count, friend_list_dashboard_path(@user, friend_type: "followers")%></p>
+  <div class ="bio-description">
+    <h6>Bio:</h6>
+     <h7><%= @user.bio %><h7>
+  </div>
   <div class="d-flex justify-content-around">
     <div class="border1">
       <div class="border"></div>
