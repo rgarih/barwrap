@@ -28,7 +28,7 @@ const drawCircles = (map, markers) => {
   map.on('load', function () {
     markers.forEach(function(marker, index) {
       if (true) {
-        map.addSource("polygon" + index, createGeoJSONCircle([marker.lng, marker.lat], 0.5));
+        map.addSource("polygon" + index, createGeoJSONCircle([marker.lng, marker.lat], 0.1));
         map.addLayer({
           "id": "polygon" + index,
           "type": "fill",
@@ -36,14 +36,13 @@ const drawCircles = (map, markers) => {
           "layout": {},
           "paint": {
             "fill-color": "purple",
-            "fill-opacity": 0.1
+            "fill-opacity": 0.3
           }
         });
 
       map.on('click', 'polygon' + index, function (e) {
         new mapboxgl.Popup()
           .setLngLat(e.lngLat)
-          .setHTML(marker.infoWindow)
           .addTo(map);
       });
 
@@ -62,6 +61,7 @@ const drawCircles = (map, markers) => {
 }
 
 var createGeoJSONCircle = function(center, radiusInKm, points) {
+
   if(!points) points = 64;
 
   var coords = {
