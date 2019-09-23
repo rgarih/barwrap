@@ -30,8 +30,8 @@
       </div>
     </div>
     <% end %>
-    <div id=<% if current_user && !current_page?(edit_user_path(current_user))%>
-      "yield-container"><% end %>
+    <div <% if current_user && !current_page?(edit_user_path(current_user))%>
+      id="yield-container"<% end %>>
       <%= yield %>
     </div>
     <% if current_user && !current_page?(edit_user_path(current_user)) %>
