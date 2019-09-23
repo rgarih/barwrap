@@ -1,3 +1,4 @@
+< <div class= "edit-form">
 <%= simple_form_for @user , url: dashboard_path(@user), method: :patch do |f| %>
 <%= f.input :first_name  %>
 <%= f.input :last_name  %>
@@ -11,6 +12,4 @@
 <%= f.input :photo_cache, as: :hidden %>
 <%= f.submit %>
 <% end %>
-
-
-
+</div>

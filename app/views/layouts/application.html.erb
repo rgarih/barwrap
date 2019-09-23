@@ -13,7 +13,7 @@
   <body >
 
     <%= render 'shared/flashes' %>
-    <% if current_user %>
+    <% if current_user && !current_page?(edit_user_path(current_user))%>
     <div class="navbar navbar-expand-sm navbar-lewagon">
       <%= link_to profile_dashboard_path(current_user), class: "navbar-brand" do %>
       <%= cl_image_tag current_user.photo, class:"avatar" %>
@@ -30,8 +30,8 @@
       </div>
     </div>
     <% end %>
-    <div id=<% if current_user && !current_page?(edit_user_path(current_user))%>
-      "yield-container"><% end %>
+    <div <% if current_user && !current_page?(edit_user_path(current_user))%>
+      id="yield-container"<% end %>>
       <%= yield %>
     </div>
     <% if current_user && !current_page?(edit_user_path(current_user)) %>

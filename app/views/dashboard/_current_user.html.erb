@@ -1,6 +1,6 @@
 <div class="container container-currrent-user">
   <div class = "d-flex flex-row-reverse db-highlight" >
-    <i class="fas fa-pen"> </i>
+    <a href="<%= edit_dashboard_path(current_user)%>"><i class="fas fa-pen"> </i></a>
   </div>
   <p class= "name"><%= @user.first_name %> <%= @user.last_name %></p>
   <%= cl_image_tag @user.photo, height: 150, width: 150, crop: :fill, class: "rounded-circle" %>
