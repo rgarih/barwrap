@@ -52,41 +52,40 @@
 <div class="check-in-container">
   <h2>Check-ins</h2>
   <% @place_checkins_history.each do |checkin| %>
-    <div class="col-12">
-      <div class="checkin">
-        <div class="checkin-content">
-          <% if !checkin.photo.model[:photo].nil? %>
-          <div class="checkin-comment">
-            <%= link_to profile_dashboard_path(checkin.user) do %>
-              <%= cl_image_tag checkin.user.photo , class:"check-avatar"%>
-              <p> <strong><%= checkin.user.username %></strong>
+  <div class="col-12">
+    <div class="checkin">
+      <div class="checkin-content">
+        <% if !checkin.photo.model[:photo].nil? %>
+        <div class="checkin-comment">
+          <%= link_to profile_dashboard_path(checkin.user) do %>
+          <%= cl_image_tag checkin.user.photo , class:"check-avatar"%>
+          <p> <strong><%= checkin.user.username %></strong>
             <% end %>
-            <%= checkin.comment %></p>
-          </div>
-          <div class="dropdown-checkin">
-            <%= cl_image_tag checkin.photo, class:"snapshot" %>
-            <i class="fas fa-ellipsis-h"></i>
-          </div>
-          <% else %>
-          <div class="checkin-comment">
-            <%= link_to profile_dashboard_path(checkin.user) do %>
-              <%= cl_image_tag checkin.user.photo , class:"check-avatar"%>
-              <p> <strong><%= checkin.user.username %></strong>
+          <%= checkin.comment %></p>
+        </div>
+        <div class="dropdown-checkin">
+          <%= cl_image_tag checkin.photo, class:"snapshot", style:"  display: none;" %>
+          <i class="fas fa-ellipsis-h"></i>
+        </div>
+        <% else %>
+        <div class="checkin-comment">
+          <%= link_to profile_dashboard_path(checkin.user) do %>
+          <%= cl_image_tag checkin.user.photo , class:"check-avatar"%>
+          <p> <strong><%= checkin.user.username %></strong>
             <% end %>
-             <%= checkin.comment %></p>
-          </div>
-          <% end %>
+          <%= checkin.comment %></p>
         </div>
-        <div class="checkin-time">
-          <p><%= distance_of_time_in_words(Time.now, checkin.created_at) %></p>
-        </div>
+        <% end %>
+      </div>
+      <div class="checkin-time">
+        <p><%= distance_of_time_in_words(Time.now, checkin.created_at) %></p>
       </div>
     </div>
-    <hr>
-    <% end %>
   </div>
+  <hr>
+  <% end %>
 </div>
-
+</div>
 <div
 id="map"
 style="width: 100%;
@@ -96,5 +95,5 @@ data-markers-check="<%= @markersCheckIn.to_json %>"
 data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 ></div>
 <%= content_for :after_js do %>
-  <%= javascript_pack_tag 'show' %>
+<%= javascript_pack_tag 'show' %>
 <% end %>

@@ -1,5 +1,8 @@
 .checkin{
   width: 100%;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  padding: 10px;
   p {
   color: white;
   font-size: 18px;
@@ -19,6 +22,7 @@
     }
   }
   .checkin-location{
+    text-align: left;
     width: 100%;
   }
   .checkin-time{
@@ -72,7 +76,5 @@
 tab{
   margin-right: 1em;
 }
-.snapshot{
-  display: none;
-}
+
 
