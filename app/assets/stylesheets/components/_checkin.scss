@@ -1,9 +1,9 @@
 .checkin{
   width: 100%;
+  padding: 5px;
   p {
   color: white;
-  font-size: 18px;
-  margin-left: -14px;
+  font-size: 14px;
 
 }
   .checkin-comment{
@@ -12,13 +12,14 @@
       display: contents;
     }
     .check-avatar{
-      height: 40px;
-      width: 40px;
+      height: 45px;
+      width: 45px;
       margin-right: 20px;
       border-radius: 50%;
     }
   }
   .checkin-location{
+    text-align: left;
     width: 100%;
   }
   .checkin-time{
@@ -72,7 +73,5 @@
 tab{
   margin-right: 1em;
 }
-.snapshot{
-  display: none;
-}
+
 
