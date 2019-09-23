@@ -5,8 +5,7 @@
     <div class="col-12">
       <div class="checkin">
         <div class="checkin-content">
-          <% if !checkin.photo.nil? %>
-          <%= cl_image_tag(checkin.photo) %>
+          <% if !checkin.photo.model[:photo].nil? %>
           <div class="checkin-location">
             <p><%= link_to checkin.place.name, place_path(checkin.place) %></p>
           </div>
@@ -17,7 +16,14 @@
               <% end %>
             <%= checkin.comment %></p>
           </div>
+          <div class="dropdown-checkin">
+            <%= cl_image_tag checkin.photo, class:"snapshot" %>
+            <i class="fas fa-ellipsis-h"></i>
+          </div>
           <% else %>
+          <div class="checkin-location">
+            <p><%= link_to checkin.place.name, place_path(checkin.place) %></p>
+          </div>
           <div class="checkin-comment">
             <%= link_to profile_dashboard_path(checkin.user) do %>
             <%= cl_image_tag checkin.user.photo , class:"check-avatar"%>
@@ -36,3 +42,6 @@
   <hr>
   <% end %>
 </div>
+<%= content_for :after_js do %>
+<%= javascript_pack_tag 'show' %>
+<% end %>

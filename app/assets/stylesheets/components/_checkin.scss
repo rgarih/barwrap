@@ -45,6 +45,16 @@
       border-radius: 6px;
     }
   }
+  .dropdown-checkin{
+    width: 100%;
+    text-align: center;
+    .fas{
+      color: white;
+      font-size: 25px;
+      opacity: 0.3;
+
+    }
+  }
 }
 
 .create-checkin-button{
@@ -62,5 +72,7 @@
 tab{
   margin-right: 1em;
 }
-
+.snapshot{
+  display: none;
+}
 
