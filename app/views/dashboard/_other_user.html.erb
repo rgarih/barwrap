@@ -35,7 +35,9 @@
         <div class="checkin-content">
           <% if !notification.photo.model[:photo].nil? %>
           <div class="checkin-location">
+            <% if !notification.place.nil? %>
             <p><%= link_to notification.place.name, place_path(notification.place) %></p>
+            <% end %>
           </div>
           <div class="checkin-comment">
             <%= link_to profile_dashboard_path(notification.user) do %>
