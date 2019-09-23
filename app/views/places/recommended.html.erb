@@ -68,7 +68,7 @@
         <h2>Your Favoites</h2>
         <div class="most-talked-about-container">
           <div class="slider">
-            <% if @favorite_places.empty? %>
+            <% if @favorite_places.nil? %>
             <% @favorite_places = @places %>
             <% end %>
             <% @favorite_places.each do |place| %>
