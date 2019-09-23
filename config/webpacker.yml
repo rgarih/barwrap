@@ -47,7 +47,6 @@ default: &default
     - .gif
     - .jpeg
     - .jpg
-
 development:
   <<: *default
   compile: true

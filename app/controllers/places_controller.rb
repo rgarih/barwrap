@@ -2,9 +2,16 @@
 class PlacesController < ApplicationController
 
   def index
+    @checkins = CheckIn.all
+    @markersCheckIn = []
+    @checkins.each do |checkin|
+      @markersCheckIn << {
+        lat: checkin.place.latitude,
+        lng: checkin.place.longitude
+      }
+    end
     @places = Place.geocoded
     @markers = []
-
     @places.each do |place|
       @markers << {
         lat: place.latitude,
