@@ -1,1 +1,67 @@
-<h1>hello</h1>
+<div class="container container-currrent-user">
+  <p class= "name"><%= @user.first_name %> <%= @user.last_name %></p>
+  <%= cl_image_tag @user.photo, height: 150, width: 150, crop: :fill, class: "rounded-circle" %>
+  <p>@<%= @user.username %></p>
+
+
+ <div class = "follow-button-user">
+    <% if current_user.is_following?(@user.id) %>
+      <%= link_to "Unfollow", unfollow_user_path(@user.id), method: :post, remote: true %>
+    <% else %>
+      <%= link_to "Follow", follow_user_path(@user.id), method: :post, remote: true %>
+    <% end %>
+  </div>
+  <p>Follows <%= link_to @followings_count, friend_list_dashboard_path(@user, friend_type: "follows")%>
+  Followers <%= link_to @followers_count, friend_list_dashboard_path(@user, friend_type: "followers")%></p>
+  <div class="d-flex justify-content-around">
+    <div class="border1">
+      <div class="border"></div>
+    </div>
+    <div class="textor">
+      <p class = "history-title">History</p>
+    </div>
+    <div class="border2">
+      <div class="border"></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="checkin">
+        <% @checkin.each do |notification| %>
+        <div class="checkin-content">
+          <% if !notification.photo.nil? %>
+          <%= cl_image_tag(notification.photo) %>
+          <div class="checkin-location">
+            <p><%= link_to notification.place.name, place_path(notification.place) %></p>
+          </div>
+          <div class="checkin-comment">
+            <%= link_to profile_dashboard_path(notification.user) do %>
+            <%= cl_image_tag notification.user.photo , class:"check-avatar"%>
+            <p> <strong><%= notification.user.username %></strong>
+              <% end %>
+            <%= notification.comment %></p>
+          </div>
+          <% else %>
+          <div class="checkin-comment">
+            <%= link_to profile_dashboard_path(notification.user) do %>
+            <%= cl_image_tag notification.user.photo , class:"check-avatar"%>
+            <p><strong><%= notification.user.username %></strong>
+              <% end %>
+            <%= notification.comment %></p>
+          </div>
+          <% end %>
+        </div>
+        <div class="checkin-time">
+          <p><%= distance_of_time_in_words(Time.now, notification.created_at) %></p>
+        </div>
+        <% end %>
+        <hr>
+      </div>
+    </div>
+  </div>
+
+
+
+
+</div>
