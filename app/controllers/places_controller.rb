@@ -5,10 +5,12 @@ class PlacesController < ApplicationController
     @checkins = CheckIn.all
     @markersCheckIn = []
     @checkins.each do |checkin|
-      @markersCheckIn << {
-        lat: checkin.place.latitude,
-        lng: checkin.place.longitude
-      }
+      if !checkin.place.nil?
+        @markersCheckIn << {
+          lat: checkin.place.latitude,
+          lng: checkin.place.longitude
+        }
+      end
     end
     @places = Place.geocoded
     if params[:query].present?

@@ -44,6 +44,7 @@
           <div class="slider">
             <% @most_talked_about.each do |place| %>
             <div class="card place-card">
+              <% if !place.nil? %>
               <%= link_to place_path(place) do %>
               <% if place.photo %>
               <%= cl_image_tag place.photo, class:"card-img-top" %>
@@ -54,6 +55,7 @@
                 <h2 class="card-text"> <%= place.name %></h2>
               </div>
             </div>
+            <% end %>
             <% end %>
             <% end %>
           </div>
