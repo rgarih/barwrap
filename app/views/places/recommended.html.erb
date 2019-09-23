@@ -26,7 +26,8 @@
         <hr>
         <div class="range">
           <label for="customRange2">Distance</label>
-          <input type="range" class="custom-range" min="0" max="50" id="distance" name="search[distance]">
+          <input type="range" class="custom-range" min="0" max="50" onchange="pin.value = distance.value + 'km'" id="distance" name="search[distance]">
+          <output id="pin" name="pin" for="distance"></output>
         </div>
         <input type="submit" name="commit" value="Search" class="banner-submit btn btn-success">
         <% end %>
