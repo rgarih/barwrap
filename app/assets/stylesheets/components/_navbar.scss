@@ -1,6 +1,16 @@
-.navbar-lewagon {
+.navbar {
   justify-content: space-between;
-  background: white;
+  background: #1C1D23;
+  width: 100vw;
+  top: 0;
+  z-index: 1;
+  position: sticky;
+  .fas{
+    color: white;
+  }
+  .nav-link{
+    color: white;
+  }
 }
 
 .navbar-lewagon .navbar-collapse {
