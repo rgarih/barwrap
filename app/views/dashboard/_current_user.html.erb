@@ -7,6 +7,33 @@
   <p>@<%= @user.username %></p>
   <p>Follows <%= link_to @followings_count, friend_list_dashboard_path(@user, friend_type: "follows")%>
   Followers <%= link_to @followers_count, friend_list_dashboard_path(@user, friend_type: "followers")%></p>
+
+<div class="container container-banner">
+  <div class="row justify-content-md-center">
+      <div class="col-12 most-talked-about">
+        <h2>Favorites</h2>
+        <div class="most-talked-about-container">
+          <div class="slider">
+            <% @favorite_places.each do |place| %>
+            <div class="card place-card">
+              <%= link_to place_path(place) do %>
+              <% if place.photo %>
+              <%= cl_image_tag place.photo, class:"card-img-top" %>
+              <% else %>
+              <%= image_tag "https://cdn.theculturetrip.com/wp-content/uploads/2016/09/main-bar-at-tir-na-nog.jpg", class:"card-img-top" %>
+              <% end %>
+              <div class="card-body">
+                <h2 class="card-text"> <%=place.name %></h2>
+              </div>
+            </div>
+            <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="d-flex justify-content-around">
     <div class="border1">
       <div class="border"></div>
@@ -54,8 +81,4 @@
       </div>
     </div>
   </div>
-
-
-
-
 </div>
