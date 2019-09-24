@@ -2,3 +2,14 @@
   height: 100%;
   width: 100vw;
 }
+.timeline{
+  .timeline-icon{
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    display: block;
+    height: 30px;
+    text-align: center;
+    padding: 5px;
+    color: white;
+  }
+}
