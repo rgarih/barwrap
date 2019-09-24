@@ -24,6 +24,9 @@ class PlacesController < ApplicationController
           end
         end
       end
+      if params[:search][:distance].present?
+        @places = @places.near(fetch_location, params[:search][:distance])
+      end
     end
     @markers = []
     @places.each do |place|
@@ -39,11 +42,8 @@ class PlacesController < ApplicationController
     @place = Place.new
     @places = Place.all
     checkins = CheckIn.all
-    @most_recent_checkins = checkins.select {|checkin|
-      (Time.new - 18_000) < checkin.created_at
-    }
-    #18000 seconds in 5 hours
-    #showing only checkin from past 5 hours
+    @most_recent_checkins = checkins.select { |checkin|
+      (Time.new - 18_000) < checkin.created_at }
     hash = {}
     @most_recent_checkins.each do |checkin|
       if hash[checkin.place].nil?
@@ -109,6 +109,11 @@ class PlacesController < ApplicationController
   end
 
   private
+
+  def fetch_location
+    ip = request.remote_ip
+    coordinates = Geocoder.search(ip).first.coordinates
+  end
 
   def set_params
     params.require(:place).permit[:name, :location, :place_type, :description, :photo]
