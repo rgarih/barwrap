@@ -42,11 +42,8 @@ class PlacesController < ApplicationController
     @place = Place.new
     @places = Place.all
     checkins = CheckIn.all
-    @most_recent_checkins = checkins.select {|checkin|
-      (Time.new - 18_000) < checkin.created_at
-    }
-    #18000 seconds in 5 hours
-    #showing only checkin from past 5 hours
+    @most_recent_checkins = checkins.select { |checkin|
+      (Time.new - 18_000) < checkin.created_at }
     hash = {}
     @most_recent_checkins.each do |checkin|
       if hash[checkin.place].nil?
