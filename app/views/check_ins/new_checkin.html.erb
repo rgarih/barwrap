@@ -1,0 +1,6 @@
+ <%= simple_form_for(@checkin, url: create_checkin_check_ins_path, method: :post) do |f| %>
+        <%= f.input :place_id, collection: Place.all %>
+        <%= f.input :comment %>
+        <%= f.input :photo %>
+        <%= f.submit 'CheckIn' %>
+      <% end %>

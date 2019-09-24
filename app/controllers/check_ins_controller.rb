@@ -5,6 +5,7 @@ class CheckInsController < ApplicationController
   end
 
   def create
+    raise
     if params[:place_id].present?
       @place = Place.find(params[:place_id])
     end
@@ -16,6 +17,15 @@ class CheckInsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def new_checkin
+    @check_in = CheckIn.new
+    # redirect_back(fallback_location: root_path)
+  end
+
+  def create_checkin
+
   end
 
   def index
@@ -34,6 +44,11 @@ class CheckInsController < ApplicationController
   end
 
   private
+
+  def fetch_location
+    ip = request.remote_ip
+    coordinates = Geocoder.search(ip).first.coordinates
+  end
 
   def set_params
     params.require(:check_in).permit(:comment, :type_of_music, :photo, :photo_cache)

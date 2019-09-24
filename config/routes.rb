@@ -17,6 +17,13 @@ Rails.application.routes.draw do
     resources :check_ins, only:[:new, :create]
   end
 
+  resources :check_ins, only: [] do
+    collection do
+      get :new_checkin
+      post :create_checkin
+    end
+  end
+
 
   resources :users , only:[:index, :edit, :update] do
     member do
