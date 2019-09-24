@@ -3,13 +3,11 @@
   <% @checkins.each do |checkin| %>
   <div class="row">
     <div class="col-1 timeline">
-      <div>
       <% if !checkin.photo.model[:photo].nil? %>
-          <img class="timeline-icon" src="https://img.icons8.com/material-outlined/24/000000/image.png">
+          <i class="timeline-icon fas fa-camera"></i>
       <% else %>
-        <i class="fas fa-map-marker-alt"></i>
+          <i class="timeline-icon fas fa-map-marker-alt"></i>
       <% end %>
-      </div>
     </div>
     <div class="col-11">
       <div class="checkin">
@@ -48,8 +46,8 @@
       </div>
     </div>
   </div>
-  <hr>
-  <% end %>
+<!--   <hr>
+ -->  <% end %>
 </div>
 <%= content_for :after_js do %>
 <%= javascript_pack_tag 'show' %>
