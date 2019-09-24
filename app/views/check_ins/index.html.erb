@@ -1,48 +1,61 @@
 <div class="container container-checkins-index">
-  <h2>What People are Talking About </h2>
-  <% @checkins.each do |checkin| %>
-  <div class="row">
-    <div class="col-12">
-      <div class="checkin">
-        <div class="checkin-content">
-          <% if !checkin.photo.model[:photo].nil? %>
-          <div class="checkin-location">
-            <% if !checkin.place.nil? %>
-            <p><%= link_to checkin.place.name, place_path(checkin.place) %></p>
-            <% end %>
-          </div>
-          <div class="checkin-comment">
-            <%= link_to profile_dashboard_path(checkin.user) do %>
-            <%= cl_image_tag checkin.user.photo , class:"check-avatar"%>
-            <p> <strong><%= checkin.user.username %></strong>
-              <% end %>
-            <%= checkin.comment %></p>
-          </div>
-          <div class="dropdown-checkin">
-            <%= cl_image_tag checkin.photo, class:"snapshot", style:"  display: none;" %>
-            <i class="fas fa-ellipsis-h"></i>
-          </div>
-          <% else %>
-          <div class="checkin-location">
-            <p><%= link_to checkin.place.name, place_path(checkin.place) %></p>
-          </div>
-          <div class="checkin-comment">
-            <%= link_to profile_dashboard_path(checkin.user) do %>
-            <%= cl_image_tag checkin.user.photo , class:"check-avatar"%>
-            <p> <strong><%= checkin.user.username %></strong>
-              <% end %>
-            <%= checkin.comment %></p>
-          </div>
+  <ul class="nav nav-tabs">
+  <li class="nav-item">
+    <% active = 'active' unless params[:filtered] %>
+    <%= link_to "Everyone", check_ins_path, class: "nav-link #{active}" %>
+  </li>
+  <li class="nav-item">
+    <% active2 = 'active' if params[:filtered] == "true" %>
+    <%= link_to "Friends", check_ins_path(filtered:true), class: "nav-link #{active2}" %>
+  </li>
+  </ul>
+</ul>
+
+<h2>What People are Talking About </h2>
+<% @checkins.each do |checkin| %>
+<div class="row">
+  <div class="col-12">
+    <div class="checkin">
+      <div class="checkin-content">
+        <% if !checkin.photo.model[:photo].nil? %>
+        <div class="checkin-location">
+          <% if !checkin.place.nil? %>
+          <p><%= link_to checkin.place.name, place_path(checkin.place) %></p>
           <% end %>
         </div>
-        <div class="checkin-time">
-          <p><%= distance_of_time_in_words(Time.now, checkin.created_at) %></p>
+        <div class="checkin-comment">
+          <%= link_to profile_dashboard_path(checkin.user) do %>
+          <%= cl_image_tag checkin.user.photo , class:"check-avatar"%>
+          <p> <strong><%= checkin.user.username %></strong>
+            <% end %>
+          <%= checkin.comment %></p>
         </div>
+        <div class="dropdown-checkin">
+          <%= cl_image_tag checkin.photo, class:"snapshot", style:"  display: none;" %>
+          <i class="fas fa-ellipsis-h"></i>
+        </div>
+        <% else %>
+        <div class="checkin-location">
+          <p><%= link_to checkin.place.name, place_path(checkin.place) %></p>
+        </div>
+        <div class="checkin-comment">
+          <%= link_to profile_dashboard_path(checkin.user) do %>
+          <%= cl_image_tag checkin.user.photo , class:"check-avatar"%>
+          <p> <strong><%= checkin.user.username %></strong>
+            <% end %>
+          <%= checkin.comment %></p>
+        </div>
+        <% end %>
+      </div>
+      <div class="checkin-time">
+        <p><%= distance_of_time_in_words(Time.now, checkin.created_at) %></p>
       </div>
     </div>
   </div>
-  <hr>
-  <% end %>
+</div>
+<hr>
+<% end %>
+
 </div>
 <%= content_for :after_js do %>
 <%= javascript_pack_tag 'show' %>

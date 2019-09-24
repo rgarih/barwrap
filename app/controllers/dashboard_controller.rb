@@ -6,7 +6,6 @@ class DashboardController < ApplicationController
     @followers_count = @user.followers.count
     @checkin = @user.check_ins.order("created_at DESC")
     @favorite_places = current_user.favorites
-
   end
 
   def edit

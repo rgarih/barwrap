@@ -19,8 +19,20 @@ class CheckInsController < ApplicationController
   end
 
   def index
-    @checkins = CheckIn.all.sort_by(&:created_at).reverse
+    if params[:filtered] == "true"
+      @user_follows = current_user.followings
+      @checkins = []
+
+      @user_follows.each do |friend|
+        @checkins << friend.check_ins.to_a
+      end
+      @checkins.flatten!
+      @checkins.sort_by(&:created_at).reverse
+    else
+      @checkins = CheckIn.all.sort_by(&:created_at).reverse
+    end
   end
+
   private
 
   def set_params
