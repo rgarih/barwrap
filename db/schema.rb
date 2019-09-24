@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_18_095221) do
+ActiveRecord::Schema.define(version: 2019_09_23_165255) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 2019_09_18_095221) do
     t.bigint "following_id"
     t.bigint "follower_id"
     t.index ["follower_id"], name: "index_followings_on_follower_id"
+    t.index ["following_id", "follower_id"], name: "index_followings_on_following_id_and_follower_id", unique: true
     t.index ["following_id"], name: "index_followings_on_following_id"
   end
 
