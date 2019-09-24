@@ -24,6 +24,9 @@ class PlacesController < ApplicationController
           end
         end
       end
+      if params[:search][:distance].present?
+        @places = @places.near(fetch_location, params[:search][:distance])
+      end
     end
     @markers = []
     @places.each do |place|
@@ -109,6 +112,11 @@ class PlacesController < ApplicationController
   end
 
   private
+
+  def fetch_location
+    ip = request.remote_ip
+    coordinates = Geocoder.search(ip).first.coordinates
+  end
 
   def set_params
     params.require(:place).permit[:name, :location, :place_type, :description, :photo]
