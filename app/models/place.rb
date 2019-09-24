@@ -2,9 +2,9 @@ class Place < ApplicationRecord
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
   has_many :check_ins
-  belongs_to :user
 
   has_many :favorite_places, dependent: :destroy
+  has_many :users, through: :favorite_places
   has_many :favorited_by, through: :favorite_places, source: :user
 
   include PgSearch::Model

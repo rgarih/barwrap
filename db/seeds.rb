@@ -34,7 +34,7 @@ html_doc.search('b a').each do |element|
       remote_photo_url: "https://source.unsplash.com/random"
 
       )
-    user.save
+    user.save!
 
     place_url = element.attribute("href")
     html_file2 = open(place_url).read
@@ -53,30 +53,29 @@ html_doc.search('b a').each do |element|
       description: description,
       place_type: types.sample,
       remote_photo_url: photo,
-
       age_group: Faker::Number.between(from: 18, to: 35)
       )
-    place.save
+    place.save!
     checkin = CheckIn.new(
       user: user,
       place: place,
       comment: Faker::Lorem.paragraph,
-      type_of_music: Faker::Music.genre,
+      type_of_music: CheckIn::TYPE_OF_MUSIC.sample,
       remote_photo_url: "https://source.unsplash.com/random"
       )
-    checkin.save
+    checkin.save!
     favs = FavoritePlace.new(
       user: user,
       place: place
       )
-    favs.save
+    favs.save!
     if User.all.length > 2
       friendship = Following.new(
 
         following: user,
         follower: User.find(user.id - 1)
       )
-      friendship.save
+      friendship.save!
     end
 end
 puts 'Finished!'
