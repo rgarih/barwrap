@@ -7,9 +7,7 @@
         <div class="checkin-content">
           <% if !checkin.photo.model[:photo].nil? %>
           <div class="checkin-location">
-            <% if !checkin.place.nil? %>
             <p><%= link_to checkin.place.name, place_path(checkin.place) %></p>
-            <% end %>
           </div>
           <div class="checkin-comment">
             <%= link_to profile_dashboard_path(checkin.user) do %>

@@ -44,7 +44,6 @@
           <div class="slider">
             <% @most_talked_about.each do |place| %>
             <div class="card place-card">
-              <% if !place.nil? %>
               <%= link_to place_path(place) do %>
               <% if place.photo %>
               <%= cl_image_tag place.photo, class:"card-img-top" %>
@@ -57,7 +56,6 @@
             </div>
             <% end %>
             <% end %>
-            <% end %>
           </div>
         </div>
       </div>
@@ -68,7 +66,7 @@
         <h2>Your Favoites</h2>
         <div class="most-talked-about-container">
           <div class="slider">
-            <% if @favorite_places.nil? %>
+            <% if @favorite_places.empty? %>
             <% @favorite_places = @places %>
             <% end %>
             <% @favorite_places.each do |place| %>
