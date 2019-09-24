@@ -59,9 +59,14 @@
         <div class="checkin-comment">
           <%= link_to profile_dashboard_path(checkin.user) do %>
           <%= cl_image_tag checkin.user.photo , class:"check-avatar"%>
-          <p> <strong><%= checkin.user.username %></strong>
-            <% end %>
-          <%= checkin.comment %></p>
+          <div>
+            <p> <strong><%= checkin.user.username %></strong>
+              <% end %>
+            <%= checkin.comment %></p>
+            <div class="checkin-time">
+              <p><%= distance_of_time_in_words(Time.now, checkin.created_at) %> ago</p>
+            </div>
+          </div>
         </div>
         <div class="dropdown-checkin">
           <%= cl_image_tag checkin.photo, class:"snapshot", style:"  display: none;" %>
@@ -71,14 +76,16 @@
         <div class="checkin-comment">
           <%= link_to profile_dashboard_path(checkin.user) do %>
           <%= cl_image_tag checkin.user.photo , class:"check-avatar"%>
-          <p> <strong><%= checkin.user.username %></strong>
-            <% end %>
-          <%= checkin.comment %></p>
+          <div>
+            <p> <strong><%= checkin.user.username %></strong>
+              <% end %>
+            <%= checkin.comment %></p>
+            <div class="checkin-time">
+              <p><%= distance_of_time_in_words(Time.now, checkin.created_at) %> ago</p>
+            </div>
+          </div>
         </div>
         <% end %>
-      </div>
-      <div class="checkin-time">
-        <p><%= distance_of_time_in_words(Time.now, checkin.created_at) %></p>
       </div>
     </div>
   </div>
