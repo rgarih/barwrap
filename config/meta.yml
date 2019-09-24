@@ -1,4 +1,4 @@
 meta_product_name: "BarWrap"
 meta_title: "BarWrap - live feed from bars around you"
 meta_description: "getting live feed from people who are in clubs/bars around me. Know exactly how crowded a place is, if they are playing your favourite type of music, and your friends are there!  It’s like getting a sneak peak of the bar without leaving my house."
-meta_image: "app/assets/images/landing-image.png" # should exist in `app/assets/images/`
+meta_image: "../app/assets/images/landing-image.png" # should exist in `app/assets/images/`
