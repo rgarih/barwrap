@@ -1,4 +1,16 @@
 <div class="container container-checkins-index">
+  <ul class="nav nav-tabs">
+  <li class="nav-item">
+    <% active = 'active' unless params[:filtered] %>
+    <%= link_to "Everyone", check_ins_path, class: "nav-link #{active}" %>
+  </li>
+  <li class="nav-item">
+    <% active2 = 'active' if params[:filtered] == "true" %>
+    <%= link_to "Friends", check_ins_path(filtered:true), class: "nav-link #{active2}" %>
+  </li>
+  </ul>
+</ul>
+
   <h2>What People are Talking About </h2>
   <% @checkins.each do |checkin| %>
   <div class="row">
@@ -55,8 +67,8 @@
       </div>
     </div>
   </div>
-  <!--   <hr>
-  -->  <% end %>
+  <% end %>
+
 </div>
 <%= content_for :after_js do %>
 <%= javascript_pack_tag 'show' %>
