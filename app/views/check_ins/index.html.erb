@@ -1,4 +1,4 @@
-<div class="container container-checkins-index">
+  <h2>What's Happening </h2>
   <ul class="nav nav-tabs">
   <li class="nav-item">
     <% active = 'active' unless params[:filtered] %>
@@ -10,8 +10,7 @@
   </li>
   </ul>
 </ul>
-
-  <h2>What People are Talking About </h2>
+<div class="container container-checkins-index">
   <% @checkins.each do |checkin| %>
   <div class="row">
     <div class="col-1 timeline">
@@ -68,8 +67,8 @@
     </div>
   </div>
   <% end %>
-
 </div>
 <%= content_for :after_js do %>
 <%= javascript_pack_tag 'show' %>
 <% end %>
+
