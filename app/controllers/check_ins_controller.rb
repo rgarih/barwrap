@@ -5,7 +5,6 @@ class CheckInsController < ApplicationController
   end
 
   def create
-    raise
     if params[:place_id].present?
       @place = Place.find(params[:place_id])
     end
@@ -21,10 +20,21 @@ class CheckInsController < ApplicationController
 
   def new_checkin
     @check_in = CheckIn.new
-    # redirect_back(fallback_location: root_path)
   end
 
   def create_checkin
+    @place = params[:check_in][:place_id]
+
+    if !@place.nil?
+       @checkin = CheckIn.new(set_params)
+       @checkin.user = current_user
+       @checkin.place = Place.find(@place.to_i)
+       if @checkin.save
+        redirect_to place_path(@checkin.place)
+      else
+        render :new
+      end
+  end
 
   end
 

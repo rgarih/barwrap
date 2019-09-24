@@ -18,6 +18,13 @@
       <%= link_to profile_dashboard_path(current_user), class: "navbar-brand" do %>
         <%= cl_image_tag current_user.photo, class:"avatar" %>
       <% end %>
+      <div class = "image-button">
+            <%= link_to new_checkin_check_ins_path  do %>
+            <div class="checkin-plus">
+              <img src="https://img.icons8.com/nolan/64/000000/plus.png" class="create-checkin-button" width="40px" >
+              <% end %>
+            </div>
+      </div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <i class="fas fa-ellipsis-v"></i>
       </button>
@@ -35,12 +42,6 @@
       <%= yield %>
     </div>
     <% if current_user && !current_page?(edit_user_path(current_user)) %>
-
-      <%= link_to new_checkin_check_ins_path  do %>
-      <div class="checkin-plus">
-        <img src="https://img.icons8.com/nolan/64/000000/plus.png" class="create-checkin-button" >
-        <% end %>
-      </div>
     <div class="footer">
       <%= link_to check_ins_path do %>
       <div class="tab-nav <% if current_page?(check_ins_path) || current_page?(root_path)%>clicked <% end %>">
