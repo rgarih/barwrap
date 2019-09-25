@@ -7,6 +7,10 @@ class ApplicationController < ActionController::Base
     check_ins_path
   end
 
+  def after_sign_out_path_for(resource)
+    user_registration_path
+  end
+
   def set_checkin
     @checkin = CheckIn.new
   end
