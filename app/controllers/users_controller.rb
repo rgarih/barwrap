@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+skip_before_action :verify_authenticity_token, only: [:follow, :unfollow]
   before_action :set_user, only: [:follow, :unfollow, :edit, :update]
 
   def index
@@ -8,6 +8,8 @@ class UsersController < ApplicationController
 
   def follow
     if current_user.follow(@user.id)
+      @followings_count = @user.followings.count
+      @followers_count = @user.followers.count
       respond_to do |format|
         format.html { redirect_to root_path }
         format.js
@@ -17,6 +19,8 @@ class UsersController < ApplicationController
 
   def unfollow
     if current_user.unfollow(@user.id)
+    @followings_count = @user.followings.count
+    @followers_count = @user.followers.count
       respond_to do |format|
         format.html { redirect_to root_path }
         format.js { render action: :follow }

@@ -1,7 +1,21 @@
+var user = document.querySelector("[data-user='<%= @user.id %>']");
+var followerDiv = document.querySelector(".user-followers-stats")
+
+
 function renderUser(userHTML) {
-  const user = document.querySelector("[data-user='<%= @user.id %>']");
   user.outerHTML = userHTML;
 }
 
+function renderStats(statsHTML) {
+  console.log(<%= @followers_count %>)
+  followerDiv.innerHTML = statsHTML
+}
 
-renderUser('<%= j render @user %>');
+if (user) {
+  renderUser('<%= j render @user %>');
+} else if (followerDiv)
+{
+  renderStats("<%= j render 'dashboard/user_follower_stats', user: @user, followings_count: @followings_count, followers_count: @followers_count %>")
+}
+
+
