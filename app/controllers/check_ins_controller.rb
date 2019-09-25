@@ -1,4 +1,6 @@
 class CheckInsController < ApplicationController
+  before_action :nearby, only: [:new_checkin]
+
   def new
     @place = Place.find(params[:place_id])
     @checkin = CheckIn.new
@@ -24,7 +26,6 @@ class CheckInsController < ApplicationController
 
   def create_checkin
     @place = params[:check_in][:place_id]
-
     if !@place.nil?
        @checkin = CheckIn.new(set_params)
        @checkin.user = current_user
@@ -55,9 +56,13 @@ class CheckInsController < ApplicationController
 
   private
 
+  def nearby
+    @places = Place.geocoded
+    @nearby_places = @places.near(fetch_location, 1)
+  end
+
   def fetch_location
-    ip = request.remote_ip
-    coordinates = Geocoder.search(ip).first.coordinates
+    [params[:lat] , params[:long]]
   end
 
   def set_params
