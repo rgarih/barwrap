@@ -73,7 +73,7 @@ class PlacesController < ApplicationController
         infoWindow: render_to_string(partial: "info_window", locals: { place: @place}),
     }
     @most_recent_checkins = checkins.select {|checkin|
-      (Time.new - 18_000) < checkin.created_at
+      (Time.new - 18_000) < checkin.created_at && checkin.place == @place
     }
     @place_checkins_history = checkins.select do |checkin|
       checkin.place == @place
