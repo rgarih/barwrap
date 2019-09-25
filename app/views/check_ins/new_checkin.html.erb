@@ -3,7 +3,7 @@
     <div class="checkin-form">
       <%= simple_form_for(@checkin, url: create_checkin_check_ins_path, method: :post) do |f| %>
         <%= f.input :comment, input_html: {value: 'Here!'} %>
-        <%= f.input :place_id, collection: Place.all %>
+        <%= f.input :place_id, collection: @nearby_places %>
         <%= f.input :type_of_music, collection: CheckIn::TYPE_OF_MUSIC %>
         <%= f.input :photo %>
         <%= f.input :photo_cache, as: :hidden %>

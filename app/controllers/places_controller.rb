@@ -1,4 +1,3 @@
-
 class PlacesController < ApplicationController
 
   def index
