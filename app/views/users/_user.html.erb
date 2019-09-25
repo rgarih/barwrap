@@ -1,25 +1,23 @@
-<div data-user=<%= user.id %>>
-  <div class="follow-list">
-    <div class= "avatar-list">
-    <%= cl_image_tag user.photo, height: 50, width: 50, crop: :fill, class: "rounded-circle" %>
-    </div>
-    <div class="follow-list-content-1">
-      <strong><p><%= user.username %></p></strong>
-      <div class = "name-list">
-        <%= user.first_name %>
-        <%= user.last_name %>
-      </div>
-    </div>
-    <div class="notification-actions">
-       <div class = "follow-button">
-          <% if current_user.is_following?(user.id) %>
-            <%= link_to "Unfollow", unfollow_user_path(user.id), method: :post, remote: true %>
-          <% else %>
-            <%= link_to "Follow", follow_user_path(user.id), method: :post, remote: true %>
-          <% end %>
-        </div>
+<div class="follow-list justify-content-between" data-user=<%= user.id %>>
+  <div class= "avatar-list">
+  <%= cl_image_tag user.photo, height: 50, width: 50, crop: :fill, class: "rounded-circle" %>
+  </div>
+  <div class="follow-list-content-1">
+    <strong><p><%= user.username %></p></strong>
+    <div class = "name-list">
+      <%= user.first_name %>
+      <%= user.last_name %>
     </div>
   </div>
-
+  <div class="notification-actions">
+     <div class = "follow-button">
+        <% if current_user.is_following?(user.id) %>
+          <%= link_to "Unfollow", unfollow_user_path(user.id), method: :post, remote: true %>
+        <% else %>
+          <%= link_to "Follow", follow_user_path(user.id), method: :post, remote: true %>
+        <% end %>
+      </div>
+  </div>
 </div>
+
 
