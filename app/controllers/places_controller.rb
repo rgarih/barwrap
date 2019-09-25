@@ -14,14 +14,17 @@ class PlacesController < ApplicationController
     end
     @places = Place.geocoded
     if params[:search].present?
-      @places = Place.search_by_name_and_location(params[:query]) if params[:query].present?
+      if params[:search][:distance].present?
+        @places = Place.near(fetch_location, params[:search][:distance])
+      end
+      if params[:query].present?
+        @places_search = Place.search_by_name_and_location(params[:query])
+        @places = @places & @places_search
+      end
       if params[:search][:types].present?
         @places = @places.select do |place|
           params[:search][:types].include?(place.check_ins.last.type_of_music) unless place.check_ins.last.nil?
         end
-      end
-      if params[:search][:distance].present?
-        @places = @places.near(fetch_location, params[:search][:distance])
       end
     end
     @markers = []
