@@ -17,7 +17,9 @@
       <% if !checkin.photo.model[:photo].nil? %>
       <i class="timeline-icon fas fa-camera"></i>
       <% else %>
-      <i class="timeline-icon fas fa-map-marker-alt"></i>
+      <%= link_to place_path(checkin.place) do %>
+        <i class="timeline-icon fas fa-map-marker-alt"></i>
+      <% end %>
       <% end %>
     </div>
     <div class="col-11">
@@ -70,5 +72,7 @@
 </div>
 <%= content_for :after_js do %>
 <%= javascript_pack_tag 'show' %>
+<%= javascript_pack_tag 'index' %>
+
 <% end %>
 
