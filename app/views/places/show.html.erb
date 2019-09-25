@@ -1,14 +1,15 @@
 <div class="banner-place-page">
   <%= @place.name %>
   <div class="favorite-place-button">
+    <% raise %>
     <%if @favorited %>
-    <%=  link_to favorite_place_path(@place, type: "unfavorite"), method: :put do %>
-    <i class="fas fa-heart"></i>
-    <% end %>
+      <%=  link_to favorite_place_path(@place, type: "unfavorite"), method: :put do %>
+      <i class="fas fa-heart"></i>
+      <% end %>
     <% else %>
-    <%=  link_to favorite_place_path(@place, type: "favorite"), method: :put do %>
-    <i class="far fa-heart"></i>
-    <% end %>
+      <%=  link_to favorite_place_path(@place, type: "favorite"), method: :put do %>
+      <i class="far fa-heart"></i>
+      <% end %>
     <% end %>
   </div>
 </div>
