@@ -113,11 +113,18 @@ const initMapbox = () => {
   if (mapElement) {
     const map = buildMap();
 
+  //   navigator.geolocation.getCurrentPosition((position) => {
+  //   let lat = position.coords.latitude;
+  //   let long = position.coords.longitude;
+  // }
 
-    map.addControl(new mapboxgl.GeolocateControl({
+    map.addControl(
+      new mapboxgl.GeolocateControl({
       positionOptions: { enableHighAccuracy: true },
       trackUserLocation: true
-    }));
+    })
+
+    );
 
     var markersCheckIn = JSON.parse(mapElement.dataset.markersCheck);
     const markers = JSON.parse(mapElement.dataset.markers);
