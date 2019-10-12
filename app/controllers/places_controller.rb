@@ -3,8 +3,11 @@ class PlacesController < ApplicationController
 
   def index
     @checkins = CheckIn.all
+    @most_recent_checkins = @checkins.select do |checkin|
+      (Time.new - 18_000) < checkin.created_at
+    end
     @markersCheckIn = []
-    @checkins.each do |checkin|
+    @most_recent_checkins.each do |checkin|
       if !checkin.place.nil?
         @markersCheckIn << {
           lat: checkin.place.latitude,
