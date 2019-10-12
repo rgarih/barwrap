@@ -19,6 +19,13 @@ body{
   background: #1C1D23;
   width: 100vw;
   height: 100vh;
+  p{
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+  }
+  h2{
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+
+  }
   #yield-container{
     margin-bottom: 45px;
     width: 100vw;
