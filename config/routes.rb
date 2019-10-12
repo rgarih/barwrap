@@ -1,10 +1,7 @@
 Rails.application.routes.draw do
 
 
-  get 'places/map'
   get 'places/recommended'
-
-
   resources :check_ins, only:[:index]
 
   authenticated :user do
