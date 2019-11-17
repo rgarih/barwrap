@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
   get 'places/recommended'
   resources :check_ins, only:[:index]
-
   authenticated :user do
     root :to => "check_ins#index"
   end
@@ -37,6 +36,13 @@ Rails.application.routes.draw do
     member do
       get 'profile'
       get 'friend_list'
+    end
+  end
+
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :check_ins, only: [ :index ]
+      resources :places, only: [ :index ]
     end
   end
 end

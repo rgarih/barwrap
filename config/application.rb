@@ -15,6 +15,8 @@ module Barwrap
         end
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
+    config.autoload_paths += Dir[Rails.root.join('app', 'policies', '*.rb')]
+
 
     config.action_view.embed_authenticity_token_in_remote_forms = true
 
